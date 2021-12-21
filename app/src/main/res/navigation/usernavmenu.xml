@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/usernavmenu"
+    app:startDestination="@id/directionFragment">
+
+    <fragment
+        android:id="@+id/directionFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.DirectionChoose.DirectionFragment"
+        android:label="DirectionFragment"
+        tools:layout="@layout/fragment_direction_fragment"
+        >
+
+        <action
+            android:id="@+id/direction_to_SetOrder"
+            app:destination="@id/setOrderFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/setOrderFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.SetOrder.SetOrderFragment"
+        android:label="fragment_set_order"
+        tools:layout="@layout/fragment_set_order" >
+        <argument
+            android:name="checkworlduzb"
+            app:argType="info.texnoman.evrtaxireal.utils.CheckUzbOrWorld"
+            android:defaultValue="UZB" />
+        <action
+            android:id="@+id/action_setOrderFragment_to_searchDirectionFragment"
+            app:destination="@id/searchDirectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchDirectionFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.SearchDriver.SearchDirectionFragment"
+        android:label="fragment_search_direction"
+        tools:layout="@layout/fragment_search_direction" />
+    <fragment
+        android:id="@+id/profilEditFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.Profil.ProfilEditFragment"
+        android:label="fragment_profil_edit"
+        tools:layout="@layout/fragment_profil_edit" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.OrderHistory.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" />
+</navigation>

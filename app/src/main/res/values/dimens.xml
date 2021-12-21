@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginsize">@dimen/_12sdp</dimen>
+    <dimen name="textsize_12">@dimen/_12sdp</dimen>
+    <dimen name="textsize_13">@dimen/_13sdp</dimen>
+    <dimen name="textsize_14">@dimen/_14sdp</dimen>
+    <dimen name="textsize_16">@dimen/_16sdp</dimen>
+    <dimen name="textsize_20">@dimen/_20sdp</dimen>
+    <dimen name="carInfomargintop">@dimen/_12sdp</dimen>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="nav_view">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/order_icon"
+            android:title="@string/buyurtmalar"/>
+        <item
+            android:id="@+id/nav_order_history"
+            android:icon="@drawable/order_history"
+            android:title="@string/buyurtmalar_tarixi"/>
+        <item
+            android:id="@+id/nav_world_order"
+            android:icon="@drawable/world_order"
+            android:title="@string/xalqaro_buyurtma"/>
+        <item
+            android:id="@+id/nav_message"
+            android:icon="@drawable/message"
+            android:title="@string/xabarnoma"/>
+    </group>
+</menu>

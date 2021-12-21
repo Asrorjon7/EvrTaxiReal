@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="._user.ui.DirectionChoose.DirectionFragment">
+     <androidx.appcompat.widget.LinearLayoutCompat
+         android:id="@+id/lvArroundUzb"
+         android:layout_width="@dimen/_120sdp"
+         android:layout_height="@dimen/_110sdp"
+         android:gravity="center"
+         android:orientation="vertical"
+         android:background="@drawable/direction_linear">
+       <ImageView
+           android:layout_width="@dimen/_70sdp"
+           android:layout_height="@dimen/_50sdp"
+           android:src="@drawable/around_uzbekistan"
+           />
+         <TextView
+             android:layout_marginTop="@dimen/_8sdp"
+             android:layout_width="@dimen/_80sdp"
+             android:gravity="center"
+             android:layout_height="wrap_content"
+             style="@style/AppTheme.MediumTextview"
+             android:text="O’zbekiston bo'ylab"
+             android:textSize="@dimen/textsize_13"
+             />
+     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lvArroundWorld"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_110sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/direction_linear">
+        <ImageView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_50sdp"
+
+            android:src="@drawable/xalqaro"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            style="@style/AppTheme.MediumTextview"
+            android:text="Xalqaro"
+            android:textSize="@dimen/textsize_13"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navmenu"
+    app:startDestination="@id/chooseLoRFragment">
+
+    <fragment
+        android:id="@+id/chooseLoRFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.RegLogChoose.RegLogChooseFragment"
+        android:label="fragment_choose_uo_d"
+        tools:layout="@layout/fragment_choose_rol" />
+    <fragment
+        android:id="@+id/chooseUoDFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.UserDriverChoose.UserDriverChooseFragment"
+        android:label="fragment_choose_uo_d"
+        tools:layout="@layout/fragment_choose_uo_d" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.LoginUser.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/confirmNumberFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.ConfirmNumber.ConfirmNumberFragment"
+        android:label="fragment_confirm_number"
+        tools:layout="@layout/fragment_confirm_number" />
+    <fragment
+        android:id="@+id/carAboutInfoFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.CarAboutInfo.CarAboutInfoFragment"
+        android:label="fragment_car_about_info"
+        tools:layout="@layout/fragment_car_about_info" />
+</navigation>

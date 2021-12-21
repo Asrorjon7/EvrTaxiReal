@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_12sdp"
+    tools:context=".auth.ui.ConfirmNumber.ConfirmNumberFragment">
+
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:focusableInTouchMode="false"
+        android:inputType="none"
+        android:paddingStart="@dimen/_14sdp"
+        android:text="+998976282882" />
+
+    <TextView
+        android:id="@+id/tvOtherNumberInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingVertical="@dimen/_8sdp"
+        android:paddingLeft="@dimen/_2sdp"
+        android:text="@string/boshqa_raqam_kiritish"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/textsize_12" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:orientation="horizontal">
+        <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
+            style="@style/editTextStyle"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:gravity="center"
+            android:minWidth="@dimen/_120sdp"
+            mask:allowed_chars="1234567890"
+            mask:mask="# # # # #"
+            android:inputType="number" />
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:fontFamily="@font/roboto"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingLeft="@dimen/_2sdp"
+            android:textColor="@color/textColorLittle"
+            android:textSize="@dimen/textsize_12"
+            />
+        <TextView
+            android:id="@+id/tvAgainSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:fontFamily="@font/roboto"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingLeft="@dimen/_2sdp"
+            android:text="@string/qayta_jo_natish"
+            android:visibility="gone"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/textsize_12" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        style="@style/AppTheme.GreenButton"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/keyingisi"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

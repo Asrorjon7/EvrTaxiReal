@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        tools:context="._user.ui.SetOrder.SetOrderFragment">
+        <TextView
+            style="@style/AppTheme.MediumTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:drawablePadding="@dimen/_8sdp"
+            android:text="@string/qayerdan"
+            android:textSize="@dimen/textsize_13"
+            app:drawableLeftCompat="@drawable/pinned_icon"/>
+        <EditText
+            android:id="@+id/etDanState"
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:hint="Davlat"
+            android:visibility="gone" />
+            <AutoCompleteTextView
+                android:id="@+id/autocompleteText"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:hint="@string/shahar"
+                style="@style/autoComplete"
+
+                />
+
+
+        <EditText
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="Manzil" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/direction_icon"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/text"
+                style="@style/AppTheme.MediumTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:text="@string/qayerga"
+                android:textSize="@dimen/textsize_13"
+                app:drawableLeftCompat="@drawable/pinned_icon"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/etGaState"
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:hint="Davlat"
+            android:visibility="gone" />
+
+        <EditText
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="Shahar" />
+
+        <EditText
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="Manzil" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/radioTypePost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:drawableStart="@drawable/post_icon"
+                android:drawablePadding="@dimen/_8sdp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="@string/pochta"
+                android:textColor="@color/radio_flat_text_selector"
+                android:textSize="@dimen/_12sdp" />
+
+            <RadioButton
+                android:id="@+id/radioTypePassanger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:drawableStart="@drawable/passanger"
+                android:drawablePadding="@dimen/_8sdp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="@string/yo_lovchi"
+
+                android:textColor="@color/radio_flat_text_selector"
+                android:textSize="@dimen/_12sdp" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lvPostvisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/AppTheme.MediumTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:text="Nima?:"
+
+                android:textSize="@dimen/textsize_12" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPostType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lvPassangerCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AppTheme.MediumTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/soni"
+                android:textSize="@dimen/textsize_12" />
+
+            <NumberPicker
+                android:id="@+id/countPassanger"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:background="@drawable/drawablenp"
+                android:divider="@android:color/transparent"
+                android:dividerPadding="0dp"
+                android:showDividers="none"
+                android:theme="@style/NumberPickerText" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AppTheme.MediumTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Narxni kiriting"
+                android:textSize="@dimen/textsize_12" />
+
+            <EditText
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/_8sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <EditText
+            style="@style/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="Izoh qoldiring" />
+
+        <TextView
+            style="@style/AppTheme.MediumTextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:drawableLeft="@drawable/passanger_icon"
+            android:drawablePadding="@dimen/_8sdp"
+            android:text="Necha soatdan keyin ketmoqchisiz ?"
+            android:textSize="@dimen/textsize_12" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:overScrollMode="never" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            style="@style/AppTheme.GreenButton"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="0dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:text="@string/izlash" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

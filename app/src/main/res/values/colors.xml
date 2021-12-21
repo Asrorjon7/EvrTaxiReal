@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#12B561</color>
+    <color name="colorPrimaryDark">#FCD34D</color>
+    <color name="colorAccent">#c75f00</color>
+    <color name="statusbarColor">#F2F2F2</color>
+    <color name="toolbarColor">#F9FAFB</color>
+    <color name="grayTextColor">#1F2937</color>
+
+    <color name="TextColor">#9CA3AF</color>
+    <color name="textColorLittle">#6B7280</color>
+
+   <color name="blue">#60A5FA</color>
+
+    <color name="gradient_default_start">#4CAF50</color>
+    <color name="gradient_default_end">#1B5E20</color>
+    <color name="gradient_error_start">#FDD835</color>
+    <color name="gradient_error_end">#F57F17</color>
+
+    <color name="light_grey">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grayBackground">#E5E7EB</color>
+</resources>

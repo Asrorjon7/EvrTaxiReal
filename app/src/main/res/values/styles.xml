@@ -1,0 +1,155 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/statusbarColor</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="StarCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+      <!--  <item name="android:button">@drawable/ic_favorite_selector</item>  -->
+    </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/statusbarColor</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Bottom" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/statusbarColor</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+  <!--  <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.DayNight" >
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="background">@color/toolbarColor</item>
+        <!--<item name="android:background">@android:color/transparent</item>-->
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+         <item name="background">@color/toolbarColor</item>
+        <!--<item name="android:background">@android:color/transparent</item>-->
+    </style>
+
+    <style name="AppTheme.Fragment">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="AppTheme.GreenButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="background">@color/colorPrimary</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="cornerRadius">@dimen/_6sdp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/textsize_12</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/marginsize</item>
+    </style>
+    <style name="AppTheme.YellowButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="cornerRadius">@dimen/_6sdp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/textsize_12</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/marginsize</item>
+    </style>
+    <style name="AppTheme.GreyButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="backgroundTint">#F2F3F5</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="cornerRadius">@dimen/_6sdp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/textsize_12</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/marginsize</item>
+    </style>
+
+    <style name="editTextStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:layout_height">@dimen/_42sdp</item>
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:textSize">@dimen/textsize_13</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
+    </style>
+    <style name="autoComplete" parent="@style/Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:layout_height">@dimen/_42sdp</item>
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:textSize">@dimen/textsize_13</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
+    </style>
+    <style name="AppTheme.spinner" parent="@style/Widget.AppCompat.Spinner.DropDown">
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:textSize">@dimen/textsize_13</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:translationY">-0.94sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
+    </style>
+
+
+
+    <style name="AppTheme.MediumTextview" parent="Widget.AppCompat.TextView">
+         <item name="android:fontFamily">@font/roboto_medium</item>
+         <item name="android:textColor">@color/grayTextColor</item>
+
+</style>
+
+    <style name="NumberPickerText">
+        <item name="android:textSize">@dimen/textsize_14</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@android:color/transparent </item>
+    </style>
+
+        <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+            <item name="spinBars">true</item>
+            <!--<item name="android:icon">@drawable/ic_drawer</item>-->
+        </style>
+
+
+    <declare-styleable name="MaskedEditText">
+        <attr name="mask" format="string" />
+        <attr name="allowed_chars" format="string" />
+        <attr name="enable_ime_action" format="boolean" />
+        <attr name="denied_chars" format="string" />
+        <attr name="char_representation" format="string" />
+        <attr name="keep_hint" format="boolean" />
+    </declare-styleable>
+
+
+</resources>

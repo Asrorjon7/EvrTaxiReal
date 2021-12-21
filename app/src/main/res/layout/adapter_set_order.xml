@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_4sdp"
+    android:paddingRight="@dimen/_7sdp"
+    >
+     <TextView
+         android:id="@+id/title"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="1"
+         android:textSize="@dimen/_12sdp"
+         android:fontFamily="@font/roboto_medium"
+         android:paddingVertical="@dimen/_7sdp"
+         android:paddingHorizontal="@dimen/_10sdp"
+         style="@style/AppTheme.MediumTextview"
+         android:background="@drawable/line_green_setorder_background"
+         />
+</androidx.appcompat.widget.LinearLayoutCompat>

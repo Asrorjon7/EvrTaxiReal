@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/_12sdp"
+    android:orientation="vertical"
+    tools:context=".auth.ui.CarAboutInfo.CarAboutInfoFragment">
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:hint="Familiya" />
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/carInfomargintop"
+        android:hint="Avtomobil brendi" />
+
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/carInfomargintop"
+        android:hint="Avtomobil modeli" />
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/carInfomargintop"
+        android:hint="Avtomobil raqami" />
+    <EditText
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/carInfomargintop"
+        android:hint="Guvohnoma raqami" />
+     <com.google.android.material.button.MaterialButton
+         android:layout_width="match_parent"
+         android:text="@string/yuborish"
+         style="@style/AppTheme.GreenButton"
+         android:layout_marginHorizontal="0dp"
+         android:layout_marginTop="@dimen/_24sdp"
+         />
+</androidx.appcompat.widget.LinearLayoutCompat>
