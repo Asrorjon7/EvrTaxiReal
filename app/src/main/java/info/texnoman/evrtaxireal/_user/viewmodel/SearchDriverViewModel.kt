@@ -23,7 +23,6 @@ class SearchDriverViewModel @Inject constructor(application: Application) :
 
     private var _currentLocation: MutableLiveData<LatLng> = MutableLiveData()
     val currentLocation: LiveData<LatLng> = _currentLocation
-
     private var _getCurrentAddress: MutableLiveData<String> = MutableLiveData()
     val getCurrentAddress: LiveData<String> = _getCurrentAddress
 

@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,9 +9,11 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="StarCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
       <!--  <item name="android:button">@drawable/ic_favorite_selector</item>  -->
     </style>
+
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -89,7 +92,6 @@
         <item name="android:textSize">@dimen/textsize_12</item>
         <item name="android:layout_marginHorizontal" tools:targetApi="o">@dimen/marginsize</item>
     </style>
-
     <style name="editTextStyle" parent="@style/Widget.AppCompat.EditText">
         <item name="android:layout_height">@dimen/_42sdp</item>
         <item name="android:textColor">@color/grayTextColor</item>
@@ -101,6 +103,31 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
     </style>
+
+    <style name="defaultViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_42sdp</item>
+    </style>
+
+    <style name="spinnerStyle" parent="defaultViewStyle">
+
+        <item name="smsp_errorTextColor">@color/errorColor</item>
+        <item name="errorEnabled">true</item>
+        <item name="smsp_floatingLabelColor">@color/colorPrimary</item>
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="smsp_errorTextSize">@dimen/_9sdp</item>
+        <item name="smsp_itemSize">@dimen/_11sdp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="smsp_hintSize">@dimen/_11sdp</item>
+        <item name="smsp_isReSelectable">true</item>
+        <item name="smsp_showDropdownHint">false</item>
+        <item name="smsp_underlineSize">0dp</item>
+        <item name="smsp_arrowSize">0dp</item>
+
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
+    </style>
+
     <style name="autoComplete" parent="@style/Widget.AppCompat.AutoCompleteTextView">
         <item name="android:layout_height">@dimen/_42sdp</item>
         <item name="android:textColor">@color/grayTextColor</item>
@@ -122,25 +149,38 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
     </style>
-
-
-
+    <style name="CheckBoxTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+    <style name="RadioButtonStyle" parent="AppTheme">
+        <item name="colorControlNormal">@color/grayBackground</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/blue</item>
+    </style>
     <style name="AppTheme.MediumTextview" parent="Widget.AppCompat.TextView">
          <item name="android:fontFamily">@font/roboto_medium</item>
          <item name="android:textColor">@color/grayTextColor</item>
-
 </style>
+
+    <style name="TextStyle">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/grayTextColor</item>
+    </style>
+
 
     <style name="NumberPickerText">
         <item name="android:textSize">@dimen/textsize_14</item>
         <item name="android:colorControlNormal" tools:targetApi="lollipop">@android:color/transparent </item>
     </style>
-
         <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
             <item name="spinBars">true</item>
             <!--<item name="android:icon">@drawable/ic_drawer</item>-->
         </style>
-
 
     <declare-styleable name="MaskedEditText">
         <attr name="mask" format="string" />
@@ -151,5 +191,18 @@
         <attr name="keep_hint" format="boolean" />
     </declare-styleable>
 
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+    </style>
 
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">350dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:background">@drawable/bottom_sheet</item>
+    </style>
+    <style name="DefaultNumberPickerTheme" parent="AppTheme">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
 </resources>

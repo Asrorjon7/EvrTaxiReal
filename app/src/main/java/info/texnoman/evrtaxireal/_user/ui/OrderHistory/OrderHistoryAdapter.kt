@@ -1,5 +1,4 @@
 package info.texnoman.evrtaxireal._user.ui.OrderHistory
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,10 +9,7 @@ import info.texnoman.evrtaxireal.databinding.AdapterOrderBinding
 class OrderHistoryAdapter(var context: Context, var list: ArrayList<OrderHistoryModel>) :
     RecyclerView.Adapter<OrderHistoryAdapter.MyHolderView>() {
     var layoutInflater = LayoutInflater.from(context)
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): OrderHistoryAdapter.MyHolderView {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHistoryAdapter.MyHolderView {
         var view = AdapterOrderBinding.inflate(layoutInflater, parent, false)
         return MyHolderView(view)
 

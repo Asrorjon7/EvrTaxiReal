@@ -3,31 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navmenu"
-    app:startDestination="@id/chooseLoRFragment">
-
+    app:startDestination="@id/carAboutInfoFragment">
     <fragment
-        android:id="@+id/chooseLoRFragment"
-        android:name="info.texnoman.evrtaxireal.auth.ui.RegLogChoose.RegLogChooseFragment"
+        android:id="@+id/entryFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.RegLogChoose.EntryFragment"
         android:label="fragment_choose_uo_d"
-        tools:layout="@layout/fragment_choose_rol" />
+        tools:layout="@layout/fragment_entry" >
+        <action
+            android:id="@+id/action_chooseLoRFragment_to_confirmNumberFragment"
+            app:destination="@id/confirmNumberFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chooseUoDFragment"
         android:name="info.texnoman.evrtaxireal.auth.ui.UserDriverChoose.UserDriverChooseFragment"
         android:label="fragment_choose_uo_d"
-        tools:layout="@layout/fragment_choose_uo_d" />
+        tools:layout="@layout/fragment_choose_uo_d" >
+        <action
+            android:id="@+id/navigateEntryFragment"
+            app:destination="@id/entryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="info.texnoman.evrtaxireal.auth.ui.LoginUser.LoginFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.LoginUser.LoginAdditionFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+
+        <argument
+            android:name="token"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
     <fragment
         android:id="@+id/confirmNumberFragment"
         android:name="info.texnoman.evrtaxireal.auth.ui.ConfirmNumber.ConfirmNumberFragment"
         android:label="fragment_confirm_number"
-        tools:layout="@layout/fragment_confirm_number" />
+        tools:layout="@layout/fragment_confirm_number" >
+        <argument
+            android:name="number"
+            app:argType="string" />
+        <action
+            android:id="@+id/navigateRegisterFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/carAboutInfoFragment"
         android:name="info.texnoman.evrtaxireal.auth.ui.CarAboutInfo.CarAboutInfoFragment"
         android:label="fragment_car_about_info"
         tools:layout="@layout/fragment_car_about_info" />
+    <fragment
+        android:id="@+id/realLoginFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.LoginUser.RealLoginFragment"
+        android:label="fragment_real_login"
+        tools:layout="@layout/fragment_real_login" >
+        <action
+            android:id="@+id/navigateConfirmFragment"
+            app:destination="@id/confirmNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.RegLogChoose.TermsFragment"
+        android:label="fragment_terms"
+        tools:layout="@layout/fragment_terms" />
+    <fragment
+        android:id="@+id/chooseLanguageFragment"
+        android:name="info.texnoman.evrtaxireal.auth.ui.ChooseLanguage.ChooseLanguageFragment"
+        android:label="fragment_choose_language"
+        tools:layout="@layout/fragment_choose_language" />
 </navigation>

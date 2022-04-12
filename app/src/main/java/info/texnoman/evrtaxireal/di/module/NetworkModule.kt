@@ -1,19 +1,15 @@
 package info.texnoman.evrtaxireal.di.module
-
 import dagger.Module
 import dagger.Provides
+import info.texnoman.evrtaxireal.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-
-
-
 @Module
 class NetworkModule {
-
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -21,7 +17,6 @@ class NetworkModule {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return loggingInterceptor
     }
-
     @Provides
     @Singleton
     fun provideOkhttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -32,10 +27,13 @@ class NetworkModule {
             .addInterceptor(loggingInterceptor)
             .build()
     }
-
-   /* @Provides
+    @Provides
     @Singleton
-    fun provideBaseUrl() = PlayerService.BASE_URL*/
+    fun provideBaseUrl() = ApiService.BASE_URL
+
+    /* @Provides
+     @Singleton
+     fun provideBaseUrl() = PlayerService.BASE_URL*/
 
     @Provides
     @Singleton

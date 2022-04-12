@@ -57,8 +57,9 @@ import kotlin.collections.ArrayList
 const val TAG = "SearchFragment"
 
 class SearchDirectionFragment :
-    BaseFragment<FragmentSearchDirectionBinding, SearchDriverViewModel>(),
-    OnMapReadyCallback {
+    BaseFragment<FragmentSearchDirectionBinding, SearchDriverViewModel>()
+  //  OnMapReadyCallback
+{
     lateinit var mapFragment: SupportMapFragment
 
     private lateinit var mMap: GoogleMap
@@ -74,7 +75,7 @@ class SearchDirectionFragment :
     override fun init() {
         (requireActivity() as UserActivity).hideActionBar()
 
-        loadMap()
+     //   loadMap()
 
         bottomSheetDialog()
 
@@ -106,23 +107,23 @@ class SearchDirectionFragment :
     ): FragmentSearchDirectionBinding =
         FragmentSearchDirectionBinding.inflate(inflater, container, false)
 
-    override fun onMapReady(googleMap: GoogleMap) {
+  /*  override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mViewModel.fusedLocation(mMap)
         mViewModel.currentLocation.observe(viewLifecycleOwner, { latlang ->
             mMap.animateCamera(CameraUpdateFactory.zoomBy(14F), 500, null)
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latlang))
         })
-    }
+    }*/
 
-    private fun loadMap() {
+   /* private fun loadMap() {
         mapFragment = (childFragmentManager.findFragmentById(R.id.mapAPI) as SupportMapFragment?)!!
         val fm = childFragmentManager
         val ft = fm.beginTransaction()
         mapFragment = SupportMapFragment.newInstance()
         ft.replace(R.id.mapAPI, mapFragment).commit()
         mapFragment.getMapAsync(this)
-    }
+    }*/
 
     @SuppressLint("ClickableViewAccessibility")
     private fun bottomSheetDialog() {
@@ -133,9 +134,9 @@ class SearchDirectionFragment :
             }
             false
         }
-        mViewModel.getCurrentAddress.observe(viewLifecycleOwner, {
+        mViewModel.getCurrentAddress.observe(viewLifecycleOwner) {
             binding.etQayerdan.setText(it.toString())
-        })
+        }
         binding.apply {
 
             btnDecrement.setOnClickListener {
@@ -145,14 +146,18 @@ class SearchDirectionFragment :
             }
             btnIncrement.setOnClickListener {
                 mViewModel.setIncrement(
-                    binding.tvResultSum.text.toString().replace(" ", "").toInt(), 2000
-                )
+                    binding.tvResultSum.text.toString().replace(" ", "").toInt(), 2000)
             }
+            btnCostIncrease.setOnClickListener {
+                (activity as UserActivity).offerShow()
+            }
+
+
         }
-        mViewModel.resultSumLive.observe(viewLifecycleOwner, {
+        mViewModel.resultSumLive.observe(viewLifecycleOwner) {
             binding.tvResultSum.text = it.toNumberFormatString()
             binding.tvSumm.text = it.toNumberFormatString()
-        })
+        }
     }
     override fun onDestroy() {
         super.onDestroy()

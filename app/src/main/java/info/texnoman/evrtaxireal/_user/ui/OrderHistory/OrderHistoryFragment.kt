@@ -2,6 +2,8 @@ package info.texnoman.evrtaxireal._user.ui.OrderHistory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import info.texnoman.evrtaxireal._user.model.OrderHistoryModel
 import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
 import info.texnoman.evrtaxireal.base.BaseFragment
 import info.texnoman.evrtaxireal.databinding.FragmentOrderHistoryBinding
@@ -18,13 +20,22 @@ class OrderHistoryFragment : BaseFragment<FragmentOrderHistoryBinding,UserViewMo
     override fun getViewModelClass(): Class<UserViewModel>  =UserViewModel::class.java
 
     override fun init() {
-     loadData()
-    }
-   fun loadData(){
-       binding.recyclerView.apply {
 
-       }
-   }
+        loadFake()
+    }
+
+    private fun loadFake() {
+        var list= ArrayList<OrderHistoryModel>()
+        for ( i in  0..10){
+            list.add(OrderHistoryModel(title = "title"))
+        }
+        binding.recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager =LinearLayoutManager(requireContext())
+            adapter = OrderHistoryAdapter(requireContext(), list)
+        }
+    }
+
     override fun setupViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?

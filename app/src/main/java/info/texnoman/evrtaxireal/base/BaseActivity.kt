@@ -1,30 +1,38 @@
 package info.texnoman.evrtaxireal.base
-
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.LayoutRes
 import androidx.lifecycle.*
 import androidx.viewbinding.ViewBinding
-import androidx.viewbinding.ViewBindings
+import com.google.gson.Gson
 import com.gun0912.tedpermission.coroutine.TedPermission
 import dagger.android.support.DaggerAppCompatActivity
 import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal.di.factory.ViewModelFactory
+import info.texnoman.evrtaxireal.utils.Constants
+import info.texnoman.evrtaxireal.utils.PrefsHelper
 import kotlinx.coroutines.launch
-import java.util.jar.Manifest
+import java.util.*
 import javax.inject.Inject
 
 abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatActivity(),LifecycleObserver {
+
+    private val gson: Gson = Gson()
+    companion object {
+        const val LOCATION_PERMISSION_REQUEST = 101
+
+    }
+    lateinit var prefs: PrefsHelper
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private  var _binding: B? =null
-    protected lateinit var mViewModel: V
 
-    protected val binding
-        get() = requireNotNull(_binding)
+    protected lateinit var mViewModel: V
+    private var _binding: B? = null
+    protected val binding get() = requireNotNull(_binding)
     val viewModel: V get() = mViewModel
     abstract fun injectViewModel()
     abstract fun getViewModelClass(): Class<V>
@@ -90,4 +98,62 @@ abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatAct
         }
     }
     abstract fun setupViewBinding(inflater: LayoutInflater): B
+    @SuppressWarnings("deprecation")
+     fun setLanguage(language: String) {
+       // ApiClient.restartRetrofit()
+       // Constants.language = language
+        prefs.language = language
+        val dm = resources.displayMetrics
+        val conf = resources.configuration
+        val locale = Locale(language)
+        conf.setLocale(locale)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            applicationContext.createConfigurationContext(conf) //for Android 7+
+        } else {
+            resources.updateConfiguration(conf, dm) //for Android 6-
+        }
+    }
+
+    //#region Changing locale should not be lost when user closes the app. When user restarts the app,
+    //app needs to load resources in the locale that was set by user last time.
+    override fun attachBaseContext(context: Context) {
+        prefs = PrefsHelper(gson, PreferenceManager.getDefaultSharedPreferences(context))
+        super.attachBaseContext(updateBaseContextLocale(context))
+    }
+
+    /**
+     * Updates locale of the base context of the [ParentActivity] when there has been a locale change.
+     * NOTE: This method also needs to called in [onCreate] function of the [ParentActivity] so that
+     * Android 6- versions will also be affected.
+     */
+    private fun updateBaseContextLocale(context: Context): Context {
+        val locale = Locale(prefs.language ?: Constants.LANGUAGE_UZBEK)
+        Locale.setDefault(locale)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return updateResourcesLocale(context, locale)
+        }
+        return updateResourcesLocaleLegacy(context, locale)
+    }
+
+    /**
+     * Updates resources for versions Android 7+
+     */
+    private fun updateResourcesLocale(context: Context, locale: Locale): Context {
+        val conf = context.resources.configuration
+        conf.setLocale(locale)
+        return context.createConfigurationContext(conf)
+    }
+
+    /**
+     * Updates resources for versions Android 6-
+     */
+    private fun updateResourcesLocaleLegacy(context: Context, locale: Locale): Context {
+        val resources = context.resources
+        val conf = resources.configuration
+        conf.setLocale(locale)
+        resources.updateConfiguration(conf, resources.displayMetrics)
+        return context
+    }
+
 }

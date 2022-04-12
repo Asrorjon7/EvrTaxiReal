@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.ui.RegLogChoose.EntryFragment">
+
+    <ImageView
+        android:id="@+id/evrpattern"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/evrburgut"
+        android:translationY="@dimen/_60sdp"
+        app:layout_constraintBottom_toTopOf="@+id/evrlogo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/evrlogo"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:src="@drawable/evrlogo"
+        app:layout_constraintBottom_toTopOf="@+id/btnPassanger"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/evrlogo"
+        app:layout_constraintVertical_bias="0.3">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/codePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_42sdp"
+                app:ccp_defaultNameCode="UZ"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/marginsize"
+                app:ccp_textSize="@dimen/_12sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etNumberInput"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:elevation="0.009dp"
+                android:background="@drawable/edittext_background">
+            </com.hbb20.CountryCodePicker>
+            <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
+                android:id="@+id/etNumberInput"
+                style="@style/editTextStyle"
+                android:layout_width="0dp"
+                android:layout_marginLeft="-12dp"
+                android:layout_marginRight="@dimen/marginsize"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:inputType="number"
+
+                app:layout_constraintLeft_toRightOf="@+id/codePicker"
+                app:keep_hint="true"
+                mask:allowed_chars="1234567890"
+                mask:mask="##-###-##-##" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+         <TextView
+             android:id="@+id/tvError"
+             android:visibility="gone"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:textColor="#F50000"
+             android:text="* Raqamni to’g’ri kiriting"
+             android:layout_marginHorizontal="@dimen/_14sdp"
+             android:layout_marginTop="@dimen/_5sdp"
+             android:fontFamily="@font/roboto"
+             >
+
+         </TextView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+            <CheckBox
+                android:id="@+id/checkTerm"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:padding="0dp"
+                android:theme="@style/CheckBoxTheme"
+                />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:text="Men foydalanish"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/grayTextColor"/>
+            <TextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=" shartlariga "
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_11sdp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_11sdp"
+                android:text="roziman"
+                android:textColor="@color/grayTextColor"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            style="@style/AppTheme.GreenButton"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:text="@string/keyingisi"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:enabled="false"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:progressBackgroundTint="@color/colorPrimary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+    <!--<com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        style="@style/AppTheme.GreyButton"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:drawableRight="@color/white"
+        android:text="@string/kirish"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister"/>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

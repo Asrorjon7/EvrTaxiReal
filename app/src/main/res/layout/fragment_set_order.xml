@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,28 +19,85 @@
             android:text="@string/qayerdan"
             android:textSize="@dimen/textsize_13"
             app:drawableLeftCompat="@drawable/pinned_icon"/>
+
         <EditText
             android:id="@+id/etDanState"
             style="@style/editTextStyle"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_8sdp"
             android:hint="Davlat"
-            android:visibility="gone" />
-            <AutoCompleteTextView
-                android:id="@+id/autocompleteText"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:hint="@string/shahar"
-                style="@style/autoComplete"
+            android:visibility="gone"/>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp">
+              <ImageView
+
+                  android:layout_width="@dimen/_12sdp"
+                  android:layout_height="@dimen/_12sdp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  android:src="@drawable/arrow_down"
+                  android:elevation="1dp"
+                  app:layout_constraintVertical_bias="0.55"
+                  android:layout_marginLeft="@dimen/_8sdp"/>
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/danRegion"
+                style="@style/spinnerStyle"
+                android:paddingStart="@dimen/_26sdp"
+                app:smsp_hint="Viloyatni tanlang"
+                app:smsp_dismissSearchText="Viloyat tanlang"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp">
+            <ImageView
+
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/arrow_down"
+                android:elevation="1dp"
+                app:layout_constraintVertical_bias="0.55"
+                android:layout_marginLeft="@dimen/_8sdp"
+                />
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/danDistrict"
+            style="@style/spinnerStyle"
+            app:smsp_hint="Tumanni tanlang"
+            app:smsp_dismissSearchText="Viloyat tanlang"
+            android:paddingStart="@dimen/_26sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/loadingView"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:elevation="@dimen/_1sdp"
+                android:indeterminateTint="@color/colorPrimary"
+                android:layout_marginRight="@dimen/_8sdp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
 
-        <EditText
-            style="@style/editTextStyle"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:hint="Manzil" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -82,17 +138,77 @@
             android:hint="Davlat"
             android:visibility="gone" />
 
-        <EditText
-            style="@style/editTextStyle"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:hint="Shahar" />
 
-        <EditText
-            style="@style/editTextStyle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:hint="Manzil" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp">
+            <ImageView
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/arrow_down"
+                android:elevation="1dp"
+                app:layout_constraintVertical_bias="0.55"
+                android:layout_marginLeft="@dimen/_8sdp"
+                />
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/gaRegion"
+                style="@style/spinnerStyle"
+                android:paddingStart="@dimen/_26sdp"
+                app:smsp_hint="Viloyatni tanlang"
+                app:smsp_dismissSearchText="Viloyat tanlang"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp">
+            <ImageView
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/arrow_down"
+                android:elevation="1dp"
+                app:layout_constraintVertical_bias="0.55"
+                android:layout_marginLeft="@dimen/_8sdp"
+                />
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/gaDistrict"
+                style="@style/spinnerStyle"
+                app:smsp_hint="Tumanni tanlang"
+                app:smsp_dismissSearchText="Viloyat tanlang"
+                android:paddingStart="@dimen/_26sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/loadingView1"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:elevation="@dimen/_1sdp"
+                android:indeterminateTint="@color/colorPrimary"
+                android:layout_marginRight="@dimen/_8sdp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -102,20 +218,22 @@
             android:animateLayoutChanges="true"
             android:orientation="horizontal"
             android:paddingVertical="@dimen/_4sdp"
+            android:weightSum="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/radioTypePost"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:drawableStart="@drawable/post_icon"
-                android:drawablePadding="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_minus11sdp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:paddingLeft="@dimen/_16sdp"
@@ -123,19 +241,20 @@
                 android:paddingRight="@dimen/_16sdp"
                 android:paddingBottom="@dimen/_3sdp"
                 android:text="@string/pochta"
+                android:layout_marginRight="@dimen/_12sdp"
                 android:textColor="@color/radio_flat_text_selector"
                 android:textSize="@dimen/_12sdp" />
-
             <RadioButton
                 android:id="@+id/radioTypePassanger"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:animateLayoutChanges="true"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
                 android:drawableStart="@drawable/passanger"
-                android:drawablePadding="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_minus11sdp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:paddingLeft="@dimen/_16sdp"
@@ -143,12 +262,37 @@
                 android:paddingRight="@dimen/_16sdp"
                 android:paddingBottom="@dimen/_3sdp"
                 android:text="@string/yo_lovchi"
-
                 android:textColor="@color/radio_flat_text_selector"
                 android:textSize="@dimen/_12sdp" />
         </RadioGroup>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/_20sdp">
+            <TextView
+                style="@style/AppTheme.MediumTextview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_12"
+                android:text="@string/joylashgan_urningiz"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/ivGetAddress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+           <ImageView
+               android:id="@+id/ivGetAddress"
+               android:layout_width="@dimen/_35sdp"
+               android:layout_height="@dimen/_35sdp"
+               android:background="@drawable/location_shape"
+               app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+              android:src="@drawable/location"
+               android:padding="@dimen/_8sdp"
+               />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+      <!--  <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/lvPostvisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -172,7 +316,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>-->
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/lvPassangerCount"
@@ -181,7 +325,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:animateLayoutChanges="true"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 style="@style/AppTheme.MediumTextview"
@@ -192,7 +336,69 @@
                 android:text="@string/soni"
                 android:textSize="@dimen/textsize_12" />
 
-            <NumberPicker
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="3"
+                android:visibility="gone" />
+             <androidx.appcompat.widget.LinearLayoutCompat
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/_40sdp"
+                 android:layout_gravity="center"
+                 android:background="@drawable/number_picker"
+                 android:gravity="center"
+                 >
+                 <ImageView
+                     android:id="@+id/decrease"
+                     android:layout_width="@dimen/_30sdp"
+                     android:layout_height="@dimen/_30sdp"
+                     android:src="@drawable/decrease"
+                     android:padding="@dimen/_10sdp"
+                     android:layout_marginRight="@dimen/_4sdp"
+                     />
+                 <TextView
+                     android:id="@+id/tvLeft"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="2"
+                     android:textColor="#9FB6B0"
+                     android:textSize="@dimen/textsize_12" />
+                 <TextView
+                     android:id="@+id/tvCenter"
+                     android:layout_marginLeft="@dimen/_14sdp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="3"
+                     android:fontFamily="@font/roboto_medium"
+                     android:textColor="#111827"
+                     android:textSize="@dimen/textsize_16" />
+                 <TextView
+                     android:id="@+id/tvRight"
+                     android:layout_marginLeft="@dimen/_14sdp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="4"
+                     android:textColor="#9FB6B0"
+                     android:textSize="@dimen/textsize_12" />
+                 <ImageView
+                     android:id="@+id/increase"
+                     android:layout_width="@dimen/_30sdp"
+                     android:layout_height="@dimen/_30sdp"
+                     android:src="@drawable/increase"
+                     android:padding="@dimen/_10sdp"
+                     android:layout_marginLeft="@dimen/_4sdp"
+                     />
+
+             </androidx.appcompat.widget.LinearLayoutCompat>
+          <!--<info.texnoman.evrtaxireal.utils.numberPicker.SazibNumberPicker
                 android:id="@+id/countPassanger"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_80sdp"
@@ -200,7 +406,7 @@
                 android:divider="@android:color/transparent"
                 android:dividerPadding="0dp"
                 android:showDividers="none"
-                android:theme="@style/NumberPickerText" />
+                android:theme="@style/NumberPickerText" />-->
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -227,23 +433,29 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_12sdp"
             android:hint="Izoh qoldiring" />
-
         <TextView
             style="@style/AppTheme.MediumTextview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/qachon"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textSize="@dimen/textsize_12" />
+        <com.google.android.material.button.MaterialButton
+           android:id="@+id/btnChooseTime"
+            style="@style/AppTheme.GreyButton"
+            android:backgroundTint="#F2F3F5"
+            android:elevation="0dp"
+            android:fontFamily="@font/roboto"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="0dp"
             android:layout_marginTop="@dimen/_12sdp"
-            android:drawableLeft="@drawable/passanger_icon"
-            android:drawablePadding="@dimen/_8sdp"
-            android:text="Necha soatdan keyin ketmoqchisiz ?"
+            android:drawableLeft="@drawable/date_time"
+            android:text="Vaqtni tanlash"
+            android:textColor="#047857"
+            app:iconGravity="textStart"
             android:textSize="@dimen/textsize_12" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:overScrollMode="never" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSearch"

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drivernavmenu"
+    app:startDestination="@id/driverOrderFragment">
+    <fragment
+        android:id="@+id/driverOrderFragment"
+        android:name="info.texnoman.evrtaxireal._driver.ui.DriverOrder.DriverOrderFragment"
+        android:label="fragment_driver_order"
+        tools:layout="@layout/fragment_driver_order" >
+        <action
+            android:id="@+id/action_driverOrderFragment_to_driverOrderDetailFragment"
+            app:destination="@id/driverOrderDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/driverOrderDetailFragment"
+        android:name="info.texnoman.evrtaxireal._driver.ui.DriverOrderDetail.DriverOrderDetailFragment"
+        android:label="Buyurtma"
+        tools:layout="@layout/fragment_driver_order_detail" >
+
+
+    </fragment>
+</navigation>

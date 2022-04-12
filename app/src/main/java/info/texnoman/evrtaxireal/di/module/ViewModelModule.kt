@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import info.texnoman.evrtaxireal._driver.viewmodel.DriverViewmodel
 import info.texnoman.evrtaxireal._user.viewmodel.SearchDriverViewModel
 import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
-import info.texnoman.evrtaxireal.auth.ui.RegLogChoose.RegLogChooseViewModel
 import info.texnoman.evrtaxireal.auth.ui.UserDriverChoose.UserDriverViewModel
 import info.texnoman.evrtaxireal.auth.ui.viewmodel.AuthViewModel
 import info.texnoman.evrtaxireal.di.ViewModelKey
@@ -43,11 +43,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(RegLogChooseViewModel::class)
-    internal abstract fun providesChoosRoLViewModel(viewModel: RegLogChooseViewModel): ViewModel
-
-    @Binds
-    @IntoMap
     @ViewModelKey(AuthViewModel::class)
     internal abstract fun providesauthViewModel(viewModel: AuthViewModel): ViewModel
 
@@ -61,6 +56,10 @@ abstract class ViewModelModule {
     @ViewModelKey(SearchDriverViewModel::class)
     internal abstract fun providessearchDriverModel(viewModel: SearchDriverViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(DriverViewmodel::class)
+    internal abstract fun provideDriverModel(viewModel: DriverViewmodel): ViewModel
 
 
 }

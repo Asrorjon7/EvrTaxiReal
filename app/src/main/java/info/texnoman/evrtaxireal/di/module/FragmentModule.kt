@@ -2,27 +2,36 @@ package info.texnoman.evrtaxireal.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import info.texnoman.evrtaxireal._driver.ui.DriverOrder.DriverOrderFragment
+import info.texnoman.evrtaxireal._driver.ui.DriverOrderDetail.DriverOrderDetailFragment
 import info.texnoman.evrtaxireal._user.ui.DirectionChoose.DirectionFragment
 import info.texnoman.evrtaxireal._user.ui.OrderHistory.OrderHistoryFragment
 import info.texnoman.evrtaxireal._user.ui.Profil.ProfilEditFragment
 import info.texnoman.evrtaxireal._user.ui.SearchDriver.SearchDirectionFragment
 import info.texnoman.evrtaxireal._user.ui.SetOrder.SetOrderFragment
 import info.texnoman.evrtaxireal.auth.ui.CarAboutInfo.CarAboutInfoFragment
+import info.texnoman.evrtaxireal.auth.ui.ChooseLanguage.ChooseLanguageFragment
 import info.texnoman.evrtaxireal.auth.ui.ConfirmNumber.ConfirmNumberFragment
-import info.texnoman.evrtaxireal.auth.ui.LoginUser.LoginFragment
-import info.texnoman.evrtaxireal.auth.ui.RegLogChoose.RegLogChooseFragment
+import info.texnoman.evrtaxireal.auth.ui.LoginUser.LoginAdditionFragment
+import info.texnoman.evrtaxireal.auth.ui.LoginUser.RealLoginFragment
+import info.texnoman.evrtaxireal.auth.ui.RegLogChoose.EntryFragment
+import info.texnoman.evrtaxireal.auth.ui.RegLogChoose.TermsFragment
 import info.texnoman.evrtaxireal.auth.ui.UserDriverChoose.UserDriverChooseFragment
 
 @Module
 abstract class FragmentModule {
+
     @ContributesAndroidInjector
-    abstract fun contributesChooseRoLFragment(): RegLogChooseFragment
+    abstract fun  contributrDriveOrderFragment(): DriverOrderFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesChooseRoLFragment(): EntryFragment
 
     @ContributesAndroidInjector
     abstract fun contributesChooseUoDFragment(): UserDriverChooseFragment
 
     @ContributesAndroidInjector
-    abstract fun contributesLoginFragment(): LoginFragment
+    abstract fun contributesLoginFragment(): LoginAdditionFragment
 
     @ContributesAndroidInjector
     abstract fun contributesConfirmFragment(): ConfirmNumberFragment
@@ -44,4 +53,19 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun  contributerSetOrderEditFragment():OrderHistoryFragment
+
+    @ContributesAndroidInjector
+    abstract fun  contributerDriverOrderDetail():DriverOrderDetailFragment
+
+
+    @ContributesAndroidInjector
+    abstract fun contributerLoginRealFragment():RealLoginFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributerTermsUseFragment():TermsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributerChooseLanguageFragment():ChooseLanguageFragment
+
+
 }

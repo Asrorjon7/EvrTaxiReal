@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#12B561</color>
     <color name="colorPrimaryDark">#FCD34D</color>
-    <color name="colorAccent">#c75f00</color>
+    <color name="colorAccent">#12B561</color>
     <color name="statusbarColor">#F2F2F2</color>
     <color name="toolbarColor">#F9FAFB</color>
     <color name="grayTextColor">#1F2937</color>
@@ -20,4 +20,10 @@
     <color name="light_grey">#E0E0E0</color>
     <color name="white">#FFFFFF</color>
     <color name="grayBackground">#E5E7EB</color>
+    <color name="textcolor">#111827</color>
+    <color name="errorColor">#FF0000</color>
+    <color name="pickerBlurTextColor">#9FB6B0</color>
+
+
+
 </resources>

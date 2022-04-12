@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/_12sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".auth.ui.CarAboutInfo.CarAboutInfoFragment">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_12sdp">
+
     <EditText
         style="@style/editTextStyle"
         android:layout_width="match_parent"
@@ -16,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/carInfomargintop"
         android:hint="Avtomobil brendi" />
-
     <EditText
         style="@style/editTextStyle"
         android:layout_width="match_parent"
@@ -32,11 +37,162 @@
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/carInfomargintop"
         android:hint="Guvohnoma raqami" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="#6B7280"
+            android:textSize="@dimen/textsize_12"
+            android:text="Doimiy qatnov yo’nalishini tanlang"
+            android:drawableStart="@drawable/car_icon"
+            android:drawablePadding="@dimen/_8sdp" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_6sdp">
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:animateLayoutChanges="true"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="1"
+                android:padding="@dimen/_4sdp">
+                <RadioButton
+                    android:id="@+id/radioInUzbekistan"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:animateLayoutChanges="true"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:layout_weight="0.6"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/_16sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingRight="@dimen/_16sdp"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:text="O'zbekiston ichida"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_11sdp"
+                    style="@style/RadioButtonStyle" />
+                <RadioButton
+                    style="@style/RadioButtonStyle"
+                    android:id="@+id/radioNational"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:animateLayoutChanges="true"
+                    android:background="@drawable/radio_flat_selector"
+                    android:button="@null"
+                    android:buttonTint="@color/colorPrimary"
+                    android:drawableRight="?android:attr/listChoiceIndicatorSingle"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/_16sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingRight="@dimen/_16sdp"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:text="Xalqaro"
+                    android:textColor="@color/radio_flat_text_selector"
+                    android:textSize="@dimen/_11sdp" />
+            </RadioGroup>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="#6B7280"
+            android:textSize="@dimen/textsize_12"
+            android:text="Viloyatni tanlang"
+            android:drawablePadding="@dimen/_8sdp" />
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:weightSum="1"
+          android:gravity="center"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:orientation="horizontal"
+          >
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.45">
+              <ImageView
+                  android:layout_width="@dimen/_9sdp"
+                  android:layout_height="@dimen/_9sdp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  android:src="@drawable/arrow_down"
+                  android:elevation="1dp"
+                  app:layout_constraintVertical_bias="0.55"
+                  android:layout_marginRight="@dimen/_6sdp"/>
+              <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                  android:id="@+id/spinRegion1"
+                  style="@style/spinnerStyle"
+                  app:smsp_hint="Viloyatni tanlang"
+                  app:smsp_dismissSearchText="Viloyat tanlang"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+           <ImageView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:src="@drawable/change"
+               android:layout_gravity="center_vertical"
+               android:layout_weight="0.1"
+               />
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.45">
+              <ImageView
+                  android:layout_width="@dimen/_9sdp"
+                  android:layout_height="@dimen/_9sdp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  android:src="@drawable/arrow_down"
+                  android:elevation="1dp"
+                  app:layout_constraintVertical_bias="0.55"
+                  android:layout_marginRight="@dimen/_6sdp"/>
+              <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                  android:id="@+id/spinRegion2"
+                  style="@style/spinnerStyle"
+                  app:smsp_hint="Viloyatni tanlang"
+                  app:smsp_dismissSearchText="Viloyat tanlang"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
      <com.google.android.material.button.MaterialButton
          android:layout_width="match_parent"
          android:text="@string/yuborish"
-         style="@style/AppTheme.GreenButton"
+         style="@style/AppTheme.YellowButton"
          android:layout_marginHorizontal="0dp"
          android:layout_marginTop="@dimen/_24sdp"
+         android:fontFamily="@font/roboto_medium"
          />
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:mask="http://schemas.android.com/apk/res-auto"
@@ -10,8 +9,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/_12sdp"
-    tools:context=".auth.ui.LoginUser.LoginFragment">
-
+    tools:context=".auth.ui.LoginUser.LoginAdditionFragment">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivLogin"
         android:layout_width="@dimen/_90sdp"
@@ -19,22 +17,26 @@
         android:layout_marginTop="@dimen/_32sdp"
         android:src="@drawable/login_men" />
     <EditText
-        android:id="@+id/etNameInput"
+        android:id="@+id/etSurnameInput"
         style="@style/editTextStyle"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/_24sdp"
+        android:hint="Familyangizni kiriting" />
+    <EditText
+        android:id="@+id/etNameInput"
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_12sdp"
         android:hint="Ismingizni kiriting" />
-
-    <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
+   <!-- <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
         android:id="@+id/etNumberInput"
         style="@style/editTextStyle"
         android:layout_width="match_parent"
         android:inputType="number"
         mask:allowed_chars="1234567890"
-        mask:mask="+998 ## ### ## ##"
+        mask:mask="+998 ##-###-##-##"
         android:layout_marginTop="@dimen/_12sdp"
-
-        app:keep_hint="true" />
+        app:keep_hint="true" />-->
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -50,7 +52,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <RadioButton
                 android:id="@+id/radioTypeMale"
                 android:layout_width="@dimen/_80sdp"
@@ -89,6 +90,17 @@
                 android:textSize="@dimen/_12sdp" />
         </RadioGroup>
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_16sdp"
+        />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNext"
         style="@style/AppTheme.GreenButton"
@@ -96,6 +108,9 @@
         android:layout_marginHorizontal="0dp"
         android:layout_marginTop="@dimen/_18sdp"
         android:drawableRight="@color/white"
-        android:text="Keyingisi" />
+        android:enabled="true"
+        android:text="Keyingisi"
+
+        />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
