@@ -88,7 +88,6 @@ class SearchDirectionFragment :
         binding.cancelOrder.setOnClickListener {
             alert("", "Siz rostan ham buyurtmani bekor qilib yubormoqchimisiz?") {
                 positiveButton("Xa") {
-
                     alert("", "Buyurtma bekor qilindi") {
                         backto("Ortga qaytish") {
                             Navigation.findNavController(requireView()).popBackStack()

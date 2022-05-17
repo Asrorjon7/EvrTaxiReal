@@ -15,7 +15,6 @@
         <action
             android:id="@+id/direction_to_SetOrder"
             app:destination="@id/setOrderFragment" />
-
     </fragment>
     <fragment
         android:id="@+id/setOrderFragment"
@@ -29,6 +28,9 @@
         <action
             android:id="@+id/action_setOrderFragment_to_searchDirectionFragment"
             app:destination="@id/searchDirectionFragment" />
+        <action
+            android:id="@+id/action_setOrderFragment_to_locationChooseFragment"
+            app:destination="@id/locationChooseFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchDirectionFragment"
@@ -44,5 +46,23 @@
         android:id="@+id/orderHistoryFragment"
         android:name="info.texnoman.evrtaxireal._user.ui.OrderHistory.OrderHistoryFragment"
         android:label="fragment_order_history"
-        tools:layout="@layout/fragment_order_history" />
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/orderHistoryToDetails"
+            app:destination="@id/orderHistoryDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationChooseFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.LocationChoose.LocationChooseFragment"
+        android:label="fragment_location_choose"
+        tools:layout="@layout/fragment_location_choose" >
+        <argument
+            android:name="location"
+            app:argType="com.google.android.gms.maps.model.LatLng" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderHistoryDetailsFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.OrderHistoryDetails.OrderHistoryDetailsFragment"
+        android:label="fragment_his_details"
+        tools:layout="@layout/fragment_his_details" />
 </navigation>

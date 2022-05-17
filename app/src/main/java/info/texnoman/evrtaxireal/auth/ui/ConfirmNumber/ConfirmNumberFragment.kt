@@ -26,14 +26,9 @@ class ConfirmNumberFragment : BaseFragment<FragmentConfirmNumberBinding, AuthVie
         mViewModel = injectViewModel(viewModelFactory)
     }
     override fun getViewModelClass(): Class<AuthViewModel> = AuthViewModel::class.java
-
-    override fun setupViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentConfirmNumberBinding {
+    override fun setupViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentConfirmNumberBinding {
         return FragmentConfirmNumberBinding.inflate(inflater, container, false)
     }
-
     override fun init() {
         nextFragment()
         var args = arguments?.get("number")
@@ -48,38 +43,40 @@ class ConfirmNumberFragment : BaseFragment<FragmentConfirmNumberBinding, AuthVie
     private fun nextFragment() {
         binding.apply {
             btnNext.setOnClickListener {
-               if (binding.etCode.rawText.toString().length!=4){
-                    binding.etCode.error="Kiriting"
+               if (binding.etCode.otp.toString().length!=4){
+                    binding.etCode.showError()
                    return@setOnClickListener
                }
-                var code = (binding.etCode.rawText.toString()).toInt()
+                var code = (binding.etCode.otp.toString()).toInt()
 
-                Log.e("codelengt",binding.etCode.rawText.toString().length.toString())
-                viewModel.confirm(
-                    ConfirmRequest(code, SaveUserInformation.getAuthInfo().confirmToken)
-                )
+                Log.e("token",SaveUserInformation.getAuthInfo().token.toString())
+               // Log.e("codelengt",binding.etCode.rawText.toString().length.toString())
+               viewModel.confirm(ConfirmRequest(code, SaveUserInformation.getAuthInfo().token))
+
                 viewModel.confirm.observe(viewLifecycleOwner) { result ->
                     when (result.status) {
                         Status.SUCCESS -> result.data.let { response ->
                             Log.e("response",response.toString())
                             if (response?.success==true){
                             response?.data.let { it1 ->
-                                if (it1?.statusCode == 10) {
+                                Log.e("nextFragment: ",it1.toString() )
+                             if (response.code == 10) {
                                     if (DrivePassanger.getTypeService() == PassangerOrDrive.Driver) {
                                         startActivity(Intent(requireContext(), DriverActivity::class.java))
                                     } else {
                                         startActivity(Intent(requireContext(), UserActivity::class.java))
                                     }
-                                } else if (it1?.statusCode == 9) {
-                                    var action =ConfirmNumberFragmentDirections.navigateRegisterFragment(it1.authKey.toString())
+                                } else if (response.code == 1) {
+                                    var action =ConfirmNumberFragmentDirections.navigateRegisterFragment(it1?.authKey.toString())
                                     Navigation.findNavController(requireView()).navigate(action)
                                 }
                             }
                             }else{
                                 response?.message.let {
                                     Log.e("wrong_code",it.toString())
-                                    binding.tvError.visible()
-                                    binding.tvError.text=it.toString()
+                                    binding.tvError.gone()
+                                     binding.etCode.showError()
+                                 //  binding.tvError.text=it.toString()
                                     progressBar.gone()
                                     btnNext.visible()
                                   //  Toast.makeText(requireContext(), it?.code.toString(), Toast.LENGTH_SHORT).show()

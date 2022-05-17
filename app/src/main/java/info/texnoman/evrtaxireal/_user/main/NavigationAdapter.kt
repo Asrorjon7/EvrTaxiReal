@@ -1,14 +1,13 @@
 package info.texnoman.evrtaxireal._user.main
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import info.texnoman.evrtaxireal._user.model.NavigationModel
+import info.texnoman.evrtaxireal.model.NavigationModel
 import info.texnoman.evrtaxireal.databinding.AdapterNavigationBinding
 
 class NavigationAdapter(var context : Context, var list:ArrayList<NavigationModel>,var click:OnItemClickListener):RecyclerView.Adapter<NavigationAdapter.MyHolderView>() {
-    var layoutInflater =LayoutInflater.from(context)
+    var layoutInflater: LayoutInflater =LayoutInflater.from(context)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NavigationAdapter.MyHolderView {
       var binding = AdapterNavigationBinding.inflate(layoutInflater,parent,false)
         return MyHolderView(binding)
@@ -25,6 +24,7 @@ class NavigationAdapter(var context : Context, var list:ArrayList<NavigationMode
            }
        }
     }
+
     override fun getItemCount(): Int {
       return list.size
     }

@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable-v24/spinner_background.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/alertdialog_corner.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/arround_order.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/arrow.xml" value="0.2045" />
         <entry key="app/src/main/res/drawable/arrow_type1.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/back.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/background_grey.xml" value="0.1705" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/drawable/edittext_background.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/filled_setorder_background.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/greyback.xml" value="0.25846153846153846" />
+        <entry key="app/src/main/res/drawable/ic_subtract.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/ic_vector.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/icon_way1.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/icon_way2.xml" value="0.184" />
@@ -33,57 +35,79 @@
         <entry key="app/src/main/res/drawable/location.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/location_shape.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/man_label.xml" value="0.25846153846153846" />
+        <entry key="app/src/main/res/drawable/maskeditbackground.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/message.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/money_adapter.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/money_notif.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/navigation_icon.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/number_picker.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/otp_drawable.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/otp_drawable_noactive.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/otp_error_color.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/passanger.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/passanger_grey.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/payment_back_grey.xml" value="0.206" />
+        <entry key="app/src/main/res/drawable/payment_stroke_color_green.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/qayerdan_adapter.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/qayerga_adapter.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/radio_flat_regular.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/radio_flat_selected.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/radio_flat_selector.xml" value="0.25846153846153846" />
         <entry key="app/src/main/res/drawable/radio_language_flat_selector.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/spinner_back.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/spinner_background.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/textview_background.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/view1.xml" value="0.2045" />
         <entry key="app/src/main/res/drawable/woman_label.xml" value="0.126" />
         <entry key="app/src/main/res/drawable/xalqaro.xml" value="0.24461538461538462" />
         <entry key="app/src/main/res/layout/activity_driver.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.24635416666666668" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.21141649048625794" />
         <entry key="app/src/main/res/layout/adapter_driver_order.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/adapter_navigation.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/adapter_order.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/adapter_set_order.xml" value="0.3544088698788602" />
+        <entry key="app/src/main/res/layout/adapter_viewpager.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/bottom_sheet_for_map.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/custom_spinner_row.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/dialog_info.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_car_about_info.xml" value="0.31891540527343754" />
         <entry key="app/src/main/res/layout/fragment_choose_language.xml" value="0.30092592592592593" />
         <entry key="app/src/main/res/layout/fragment_choose_rol.xml" value="0.3609625668449198" />
         <entry key="app/src/main/res/layout/fragment_choose_uo_d.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_confirm_number.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_confirm_number.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_direction_fragment.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_driver_order.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/fragment_driver_order_detail.xml" value="0.2324790691507274" />
         <entry key="app/src/main/res/layout/fragment_entry.xml" value="0.3083832335329341" />
+        <entry key="app/src/main/res/layout/fragment_his_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_location_choose.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.30030702231070827" />
         <entry key="app/src/main/res/layout/fragment_order_history.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/fragment_profil_edit.xml" value="0.24635416666666668" />
-        <entry key="app/src/main/res/layout/fragment_real_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_real_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_search_direction.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/fragment_set_order.xml" value="0.2561141967773437" />
+        <entry key="app/src/main/res/layout/fragment_set_order.xml" value="0.21213836669921882" />
         <entry key="app/src/main/res/layout/fragment_terms.xml" value="0.2421875" />
+        <entry key="app/src/main/res/layout/layout_date_picker_globalization1.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/location_choose.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.11304347826086956" />
         <entry key="app/src/main/res/layout/numberpicker_horizontal.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/picker_item_layout.xml" value="0.2712962962962963" />
         <entry key="app/src/main/res/layout/row_view_picker_item.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.24635416666666668" />
-        <entry key="app/src/main/res/layout/walking_time.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/walking_time.xml" value="0.5473526000976563" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.30512820512820515" />
+        <entry key="date_time_picker/src/main/res/drawable/shape_bg_round_white_5.xml" value="0.198" />
+        <entry key="date_time_picker/src/main/res/layout/dt_dialog_time_picker.xml" value="0.3098958333333333" />
+        <entry key="date_time_picker/src/main/res/layout/dt_dialog_week_picker.xml" value="0.3098958333333333" />
+        <entry key="date_time_picker/src/main/res/layout/dt_layout_date_picker.xml" value="0.3098958333333333" />
+        <entry key="date_time_picker/src/main/res/layout/dt_layout_date_picker_globalization.xml" value="0.3098958333333333" />
+        <entry key="date_time_picker/src/main/res/layout/dt_number_picker_material.xml" value="0.3098958333333333" />
         <entry key="smartmaterialspinner/src/main/res/layout/activity_runtime_render_view_activity.xml" value="0.1" />
         <entry key="smartmaterialspinner/src/main/res/layout/smart_material_spinner_dropdown_item_layout.xml" value="0.1" />
         <entry key="smartmaterialspinner/src/main/res/layout/smart_material_spinner_item_layout.xml" value="0.1" />

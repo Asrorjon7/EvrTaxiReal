@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="._driver.ui.PaymentFragment">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_24sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/ism"
+            android:textSize="@dimen/_11sdp" />
+        <TextView
+            style="@style/AppTheme.MediumTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fakhriyor Fax"
+            android:textColor="@color/grayTextColor"
+            android:textSize="@dimen/_12sdp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:fontFamily="@font/roboto"
+            android:text="ID"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            style="@style/AppTheme.MediumTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="99 897 628 28 82"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12sdp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_5sdp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lvPayme"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:background="@drawable/payment_stroke_color_green"
+            android:layout_marginRight="@dimen/_12sdp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lvClick"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:background="@drawable/payment_back_grey">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <EditText
+        android:id="@+id/etPaymentAmount"
+        android:layout_width="match_parent"
+        style="@style/editTextStyle"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:hint="To’lov summasi"
+        android:paddingLeft="@dimen/_12sdp"
+        android:inputType="number"/>
+    <com.google.android.material.button.MaterialButton
+       android:id="@+id/btnReplenishAccount"
+        android:layout_width="match_parent"
+        style="@style/AppTheme.YellowButton"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="Hisobni to’ldirish"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/_12sdp"
+        android:lineSpacingExtra="0dp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,18 +1,15 @@
 package info.texnoman.evrtaxireal._user.main
 import android.content.Intent
-import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import info.texnoman.evrtaxireal.R
-import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
-import info.texnoman.evrtaxireal.base.BaseActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -20,20 +17,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.alexandregpereira.jerry.after
 import br.alexandregpereira.jerry.animation.scaleXSpring
 import br.alexandregpereira.jerry.animation.scaleYSpring
-import br.alexandregpereira.jerry.animation.translationXSpring
 import br.alexandregpereira.jerry.force
-import br.alexandregpereira.jerry.lastForce
 import br.alexandregpereira.jerry.start
 import com.google.android.material.navigation.NavigationView
+import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal._driver.main.DriverActivity
-import info.texnoman.evrtaxireal._user.model.NavigationModel
+import info.texnoman.evrtaxireal.model.NavigationModel
+import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
+import info.texnoman.evrtaxireal.base.BaseActivity
 import info.texnoman.evrtaxireal.databinding.ActivityUserBinding
 import info.texnoman.evrtaxireal.di.factory.injectViewModel
-import info.texnoman.evrtaxireal.utils.PassangerOrDrive
-import info.texnoman.evrtaxireal.utils.TypeService
-import info.texnoman.evrtaxireal.utils.gone
+import info.texnoman.evrtaxireal.utils.*
 import info.texnoman.evrtaxireal.utils.shared.DrivePassanger
-import info.texnoman.evrtaxireal.utils.visible
+
 class UserActivity : BaseActivity<ActivityUserBinding, UserViewModel>(),
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var navController: NavController
@@ -49,17 +45,14 @@ class UserActivity : BaseActivity<ActivityUserBinding, UserViewModel>(),
 
         loadList()
         initViews()
-
         setProfile()
         setDriveIntent()
-
+        changeLanguage(prefs,this,this)
      //   binding.lvOffer.visible()
     }
-
     private fun setDriveIntent() {
 
     }
-
     private fun initViews() {
         var driver  = findViewById<Button>(R.id.btnDriver)
         driver.setOnClickListener {
@@ -72,14 +65,39 @@ class UserActivity : BaseActivity<ActivityUserBinding, UserViewModel>(),
             setSupportActionBar(toolbar)
             val toggle = ActionBarDrawerToggle(this@UserActivity, drawerLayout, toolbar, R.string.open, R.string.close)
             drawerLayout.addDrawerListener(toggle)
+
+             //toggle.setHomeAsUpIndicator(R.drawable.menu) //set your own
+            toggle.toolbarNavigationClickListener = View.OnClickListener {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START)
+                }
+            }
             toggle.syncState()
+
             navController = findNavController(R.id.navhost)
-            appBarConfiguration = AppBarConfiguration(setOf(R.id.directionFragment), drawerLayout)
+            appBarConfiguration = AppBarConfiguration(setOf(R.id.directionFragment,R.id.setOrderFragment), drawerLayout)
             toolbar.setupWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
             toolbar.navigationIcon = ContextCompat.getDrawable(this@UserActivity, R.drawable.navigation_icon)
+            navController.addOnDestinationChangedListener { view, destination, data ->
+               /* when(destination.id){
+                   R.id.setOrderFragment->{
+                       supportActionBar?.setHomeButtonEnabled(false)
+                       supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                   }
+                    R.id.directionFragment->{
+                        supportActionBar?.setHomeButtonEnabled(false)
+                        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    }
+                }*/
+            }
+
+
         }
     }
+
     private fun setProfile() {
         var view = binding.navView.getHeaderView(0);
         var profil = view.findViewById<ConstraintLayout>(R.id.lvProfil)
@@ -152,16 +170,12 @@ class UserActivity : BaseActivity<ActivityUserBinding, UserViewModel>(),
         binding.btnCancelOffer.setOnClickListener {
          binding.lvOffer.gone()
         }
-
         binding.lvOffer.visible()
-
-
     }
-
     fun offerGone(){
-
         binding.lvOffer.gone()
     }
+
 
 
 }

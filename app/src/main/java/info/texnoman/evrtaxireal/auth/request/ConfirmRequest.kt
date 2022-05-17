@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName
 data class ConfirmRequest(
 	@field:SerializedName("code")
 	val code: Int? = null,
-	@field:SerializedName("confirm_token")
-	val authKey: String? = null
+	@field:SerializedName("token")
+	val token: String? = null
 ) : Parcelable {
 	constructor(parcel: Parcel) : this(
 		parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -18,7 +18,7 @@ data class ConfirmRequest(
 
 	override fun writeToParcel(parcel: Parcel, flags: Int) {
 		parcel.writeValue(code)
-		parcel.writeString(authKey)
+		parcel.writeString(token)
 	}
 
 	override fun describeContents(): Int {

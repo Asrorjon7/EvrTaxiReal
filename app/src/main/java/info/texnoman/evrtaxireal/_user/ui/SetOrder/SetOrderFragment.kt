@@ -6,133 +6,124 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.gms.maps.model.LatLng
+import com.loper7.date_time_picker.dialog.CardDatePickerDialog
 import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal._user.main.UserActivity
-import info.texnoman.evrtaxireal._user.model.SetOrderModel
-import info.texnoman.evrtaxireal._user.model.response.RegionResponse
 import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
 import info.texnoman.evrtaxireal.base.BaseFragment
 import info.texnoman.evrtaxireal.databinding.FragmentSetOrderBinding
-import info.texnoman.evrtaxireal.databinding.WalkingTimeBinding
 import info.texnoman.evrtaxireal.di.factory.injectViewModel
+import info.texnoman.evrtaxireal.model.SetOrderModel
+import info.texnoman.evrtaxireal.model.request.SetNewOrderRequest
+import info.texnoman.evrtaxireal.model.response.RegionResponse
 import info.texnoman.evrtaxireal.utils.*
 import info.texnoman.evrtaxireal.utils.numberPicker.PickerAdapter
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
-
+import kotlinx.coroutines.Dispatchers
 
 class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
     SetOrderAdapter.OnItemClickListener {
 
-    var danRegionList = ArrayList<RegionResponse>()   //-->Viloyat yoki davlatni saqlab turish uchun list
-    var danDistrictList = ArrayList<RegionResponse>() //-->Tuman yoki Viloyatni saqlab turadi saqlab turish uchun list
+    var danRegionList =
+        ArrayList<RegionResponse>()   //-->Viloyat yoki davlatni saqlab turish uchun list
+    var danDistrictList =
+        ArrayList<RegionResponse>() //-->Tuman yoki Viloyatni saqlab turadi saqlab turish uchun list
     var gaDistrictList = ArrayList<RegionResponse>()
     var gaRegionList = ArrayList<RegionResponse>()
-    var  dateList =ArrayList<String>()
-    var firstTime:Boolean =true
+    var firstTime: Boolean = true
     val args: SetOrderFragmentArgs by navArgs()
-    lateinit  var adapter: PickerAdapter
-    enum class DanYoGa {
-        Dan, Ga, not
-    }
+
+    lateinit var adapter: PickerAdapter
+
+    enum class DanYoGa { Dan, Ga, not }
+
     var danYoGa: DanYoGa = DanYoGa.not
+
     override fun injectViewModel() {
         mViewModel = injectViewModel(viewModelFactory)
     }
+
     override fun getViewModelClass(): Class<UserViewModel> = UserViewModel::class.java
     override fun init() {
-        dateList.addAll(getWeekDay())
-        requireView().hideKeyboard()
-        firstTime =true
-       var myLocation =MyLocation()
-        NumberPicker(binding)
-        checkUzbOrWorld(args)
-        typeService()
-        searchButton()
-        getRegion()
-        val locale = context?.resources?.configuration?.locale?.country
-         Log.e("locallar",locale.toString())
-        binding.apply {
-            setOnItemSelectedListener(danRegion, danDistrict, gaRegion, gaDistrict)
-        }
-        binding.btnChooseTime.setOnClickListener { ///Ketish vaqtini tanlash
-            chooseTime()
-            Log.e("dateTime", getWeekDay().toString())
 
-        }
+        Log.e("token", token.toString())
 
-        binding.ivGetAddress.setOnClickListener {
-        var result=myLocation.getLocation(requireContext(),locationResult)
-          if (!result){
-              Toast.makeText(requireContext(), getString(R.string.gpsniyoqing), Toast.LENGTH_SHORT).show()
-          }
-        }
-    }
-    private fun chooseTime() {
+        Dispatchers.IO.let {
+            requireView().hideKeyboard()
+            firstTime = true
+            var myLocation = MyLocation()
+            NumberPicker(binding)
+            checkUzbOrWorld(args)
+            typeService()
+            searchButton()
+            getRegion()
+            val locale = context?.resources?.configuration?.locale?.country
+            Log.e("locallar", locale.toString())
+            binding.apply {
+                setOnItemSelectedListener(danRegion, danDistrict, gaRegion, gaDistrict)
+            }
+            binding.btnChooseTime.setOnClickListener {
+                var minTime = System.currentTimeMillis()
+                var defaultDate: Long = 0
+                CardDatePickerDialog.builder(requireContext())
+                    .setTitle(getString(R.string.ketish_vaqtini_tanlang))
+                    .setDefaultTime(defaultDate)
+                    .setMinTime(minTime)
+                    // .setMaxTime(maxTime)
+                    .setTouchHideable(true)
+                    .setWrapSelectorWheel(false)
+                    .setOnChoose {
+                        defaultDate = it
+                        var dateTime = StringUtils.conversionTime(it, "dd-MM-yyyy HH:mm")
+                        var date = dateTime.substring(0, 10)
+                        var time = dateTime.substring(10)
+                        Log.e("salomlar", StringUtils.conversionTime(it, "yyyy-MM-dd HH:mm"))
+                        binding.btnChooseTime.text = "$date $time"
+                    }.build().show()
 
-        val dialog =BottomSheetDialog(requireContext(),R.style.BottomSheetDialog)
-        val dialogbinding =WalkingTimeBinding.inflate(layoutInflater)
-        dialogbinding.apply {
-            npDate.minValue=0
-            npDate.maxValue=getWeekDay().size-1
-            npDate.setFormatter(object :NumberPicker.Formatter{
-                override fun format(value: Int): String {
-
-                    return dateList[value]
+            }
+            binding.ivGetAddress.setOnClickListener {
+                var result = myLocation.getLocation(requireContext(), locationResult)
+                if (!result) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.gpsniyoqing),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-            })
-
-            npDate.displayedValues = getWeekDay().toTypedArray()
+            }
         }
-        dialogbinding.btn.setOnClickListener {
-            Toast.makeText(requireContext(), "bosildi", Toast.LENGTH_SHORT).show()
-        }
-        dialog.setContentView(dialogbinding.root)
-        dialog.show()
     }
+
     /**
      * Viloyatlarni olish uchun function
      */
-
-    private  fun getWeekDay(): MutableList<String> {
-        val c1: Calendar = Calendar.getInstance()
-
-        val dates: MutableList<String> = ArrayList()
-
-        val dateFormat: DateFormat = SimpleDateFormat("dd   MMMM   yyyy")
-        dates.add(dateFormat.format(c1.time))
-        for (i in 0..30) {
-            c1.add(Calendar.DATE, 1)
-            dates.add(dateFormat.format(c1.time))
-        }
-        return dates
-    }
-
     private fun getRegion() {
-        viewModel.fungetRegion(token)
+        viewModel.fungetRegion(1)
         viewModel.getRegion.observe(viewLifecycleOwner) { result ->
             when (result.status) {
                 Status.SUCCESS -> result.data.let {
-                    danRegionList.addAll(it?.data!!)
-                    gaRegionList.addAll(it.data!!)
-                    /**
-                     * Qayerdan borishini tanlash
-                     */
-                    binding.danRegion.item = getRegionNameList(it.data!!) as List<Any>?
-                    binding.danRegion.setSelection(11)
-                    /**
-                     * Qayerga borishini tanlash
-                     */
-                    binding.gaRegion.item = getRegionNameList(it.data!!) as List<Any>?
-                    binding.gaRegion.setSelection(11)
+                    try {
+                        danRegionList.addAll(it?.data!!)
+                        gaRegionList.addAll(it.data!!)
+                        /**
+                         * Qayerdan borishini tanlash
+                         */
+                        binding.danRegion.item = getRegionNameList(it.data!!) as List<Any>?
+                        binding.danRegion.setSelection(11)
+                        /**
+                         * Qayerga borishini tanlash
+                         */
+                        binding.gaRegion.item = getRegionNameList(it.data!!) as List<Any>?
+                        binding.gaRegion.setSelection(11)
+
+                    } catch (e: Exception) {
+
+                    }
 
                 }
                 Status.LOADING -> {
@@ -144,7 +135,7 @@ class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
     }
 
     fun getDistrict(id: Int) {
-        viewModel.fungetDistrict(token, id)
+        viewModel.fungetDistrict(id)
         viewModel.getDistrict.observe(viewLifecycleOwner) { result ->
             when (result.status) {
                 Status.SUCCESS -> result.data.let {
@@ -166,17 +157,17 @@ class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
                             gaDistrict.isEnabled = true
                         }
                     }
-                    if (firstTime){
+                    if (firstTime) {
                         binding.apply {
-                        danDistrict.item = getRegionNameList(it.data!!) as List<Any>?
-                        danDistrict.setSelection(0)
-                        loadingView.gone()
-                        danDistrict.isEnabled = true
-                            firstTime=false
+                            danDistrict.item = getRegionNameList(it.data!!) as List<Any>?
+                            danDistrict.setSelection(0)
+                            loadingView.gone()
+                            danDistrict.isEnabled = true
+                            firstTime = false
                         }
                     }
-                    Log.e("danDistrict",binding.danDistrict.count.toString())
-                    Log.e("gaDistrict",binding.gaDistrict.count.toString())
+                    Log.e("danDistrict", binding.danDistrict.count.toString())
+                    Log.e("gaDistrict", binding.gaDistrict.count.toString())
 
                 }
                 Status.LOADING -> {
@@ -193,23 +184,35 @@ class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
     }
 
     private fun searchButton() {
-        binding.btnSearch.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_setOrderFragment_to_searchDirectionFragment)
-        }
+        binding.btnSearch.setOnClickListener {view->
+            viewModel.setNewOrder(token,SetNewOrderRequest(1,1,"40.71073057922801",1,1,"wew",1,1652444513,"40.71073057922801",2))
+                .observe(viewLifecycleOwner){result->
+                    when(result.status){
+                        Status.SUCCESS->result.data.let{it->
+                            Log.e("response",it?.data.toString())
+                            Navigation.findNavController(view)
+                                .navigate(R.id.action_setOrderFragment_to_searchDirectionFragment)
+
+                        }
+                    }
+                }
+ }
     }
 
     var locationResult: MyLocation.LocationResult = object : MyLocation.LocationResult() {
         override fun gotLocation(location: Location) {
-            // TODO Auto-generated method stub
             val Longitude: Double = location.longitude
             val Latitude: Double = location.latitude
             Log.e("long", "$Longitude $Latitude")
-
+            var action = SetOrderFragmentDirections.actionSetOrderFragmentToLocationChooseFragment(
+                LatLng(
+                    Latitude,
+                    Longitude
+                )
+            )
+            Navigation.findNavController(requireView()).navigate(action)
         }
     }
-
-
 
     private fun typeService() {
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -226,16 +229,14 @@ class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
             if (type == TypeService.Passanger) {
                 binding.apply {
                     lvPassangerCount.visible()
-                 //   lvPostvisible.gone()
+                    //   lvPostvisible.gone()
                 }
             } else {
                 binding.apply {
                     lvPassangerCount.gone()
-                //    lvPostvisible.visible()
+                    //    lvPostvisible.visible()
                 }
-
             }
-
         }
     }
 
@@ -288,6 +289,7 @@ class SetOrderFragment : BaseFragment<FragmentSetOrderBinding, UserViewModel>(),
                     }
 
                 }
+
                 override fun onNothingSelected(adapterView: AdapterView<*>?) {
                     spinner.errorText = "On Nothing Selected"
                 }

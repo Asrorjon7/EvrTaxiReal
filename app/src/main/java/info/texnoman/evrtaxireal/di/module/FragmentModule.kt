@@ -4,8 +4,11 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import info.texnoman.evrtaxireal._driver.ui.DriverOrder.DriverOrderFragment
 import info.texnoman.evrtaxireal._driver.ui.DriverOrderDetail.DriverOrderDetailFragment
+import info.texnoman.evrtaxireal._driver.ui.PaymentFragment
 import info.texnoman.evrtaxireal._user.ui.DirectionChoose.DirectionFragment
+import info.texnoman.evrtaxireal._user.ui.LocationChoose.LocationChooseFragment
 import info.texnoman.evrtaxireal._user.ui.OrderHistory.OrderHistoryFragment
+import info.texnoman.evrtaxireal._user.ui.OrderHistoryDetails.OrderHistoryDetailsFragment
 import info.texnoman.evrtaxireal._user.ui.Profil.ProfilEditFragment
 import info.texnoman.evrtaxireal._user.ui.SearchDriver.SearchDirectionFragment
 import info.texnoman.evrtaxireal._user.ui.SetOrder.SetOrderFragment
@@ -67,5 +70,12 @@ abstract class FragmentModule {
     @ContributesAndroidInjector
     abstract fun contributerChooseLanguageFragment():ChooseLanguageFragment
 
+    @ContributesAndroidInjector
+    abstract fun contributerChooseLocationFragment():LocationChooseFragment
 
+    @ContributesAndroidInjector
+    abstract fun contributerPaymentFragment():PaymentFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributerOrderHistoryFragment():OrderHistoryDetailsFragment
 }

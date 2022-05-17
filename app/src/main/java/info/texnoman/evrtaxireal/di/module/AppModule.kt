@@ -24,12 +24,12 @@ class AppModule {
     @Singleton
     @Provides
     fun provideAuthInterceptor(sharedPreferencesSources: String): Interceptor {
-        return AuthInterceptor(){ sharedPreferencesSources }
+        return AuthInterceptor() { sharedPreferencesSources }
     }
 
     @Provides
     @Singleton
-    fun provideContext(app: MainApplication):Context =app
+    fun provideContext(app: MainApplication): Context = app
 
     @Provides
     @Singleton
@@ -62,7 +62,9 @@ class AppModule {
     @Provides
     @Singleton
     fun provideRepository(apiService: ApiService) = Repository(apiService)
-
-
+/*
+    @Provides
+    @Singleton
+    fun provideRepositoryYandex(yandexService: YandexService) = YandexRepository(yandexService)*/
 
 }

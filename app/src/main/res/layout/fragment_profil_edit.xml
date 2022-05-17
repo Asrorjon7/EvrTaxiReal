@@ -110,21 +110,46 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text"
             app:layout_constraintHorizontal_bias="1"
+            android:layout_marginLeft="@dimen/_6sdp"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnDriver"
+    <View
         android:layout_width="match_parent"
-        style="@style/AppTheme.YellowButton"
-        android:layout_marginTop="@dimen/_32sdp"
-         android:text="@string/haydovchi"
-        android:drawableRight="@drawable/driver_icon"
-        />
+        android:layout_height="0.7dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="#0000001A"
+        android:layout_marginTop="@dimen/_16sdp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13sdp"
+        android:drawableStart="@drawable/moshin"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:text="Chevrolet Spark, 40D190MA"
+        android:drawablePadding="@dimen/_12sdp"
+        style="@style/AppTheme.MediumTextview"
+        android:fontFamily="@font/roboto">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13sdp"
+        android:drawableStart="@drawable/karmon"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:text="20 000 so’m "
+        android:layout_marginTop="@dimen/_12sdp"
+        android:drawablePadding="@dimen/_12sdp"
+        style="@style/AppTheme.MediumTextview"
+        android:fontFamily="@font/roboto">
+    </TextView>
       <com.google.android.material.button.MaterialButton
-          android:layout_width="match_parent"
           style="@style/AppTheme.GreyButton"
-          android:text="Chiqish"
+          android:layout_width="match_parent"
+          android:text="@string/chiqish"
+          android:textSize="@dimen/_14sdp"
+          android:fontFamily="@font/roboto_medium"
           android:textColor="#DC2626"
-          android:layout_marginTop="@dimen/_8sdp"
-          />
+          android:layout_marginTop="@dimen/_24sdp"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

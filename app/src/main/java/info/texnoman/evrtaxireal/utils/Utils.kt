@@ -1,5 +1,5 @@
 package info.texnoman.evrtaxireal.utils
-
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.view.View
@@ -8,10 +8,12 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import info.texnoman.evrtaxireal.R
-import info.texnoman.evrtaxireal._user.model.response.RegionResponse
+import info.texnoman.evrtaxireal.model.response.RegionResponse
+import info.texnoman.evrtaxireal.auth.model.CarBrand
+import info.texnoman.evrtaxireal.auth.model.CountryModel
+import info.texnoman.evrtaxireal.base.BaseActivity
 import info.texnoman.evrtaxireal.databinding.FragmentSetOrderBinding
 import info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
 
@@ -38,7 +40,7 @@ fun View.hideKeyboard() {
 }
 
 fun MaskedEditText.replace(): String {
-    return this.text.toString().replace("-", " ")
+    return this.text.toString().replace("-", "")
 }
 
 fun SharedPreferences.put(key: String, value: String?) {
@@ -122,46 +124,113 @@ fun getRegionNameList(data: ArrayList<RegionResponse>): ArrayList<String> {
     }
     return list
 }
+
+fun getCountryNameList(data: ArrayList<CountryModel>): ArrayList<String> {
+    var list = ArrayList<String>()
+    for (i in data.indices) {
+        list.add(data[i].name.toString())
+    }
+    return list
+}
+fun getCarModelNameList(data: ArrayList<CarBrand>): ArrayList<String> {
+    var list = ArrayList<String>()
+    for (i in data.indices) {
+        list.add(data[i].name.toString())
+    }
+    return list
+}
+
+
 fun getRegionId(data: ArrayList<RegionResponse>, position: Int): Int {
     return data[position].id?.toInt()!!
 }
-fun  NumberPicker(binding: FragmentSetOrderBinding){
-     var list = arrayListOf<String>("1","2","3","4","+4")
-    var position =2
-    setTextNumberPicker(position,list,binding)
+fun NumberPicker(binding: FragmentSetOrderBinding) {
+    var list = arrayListOf<String>("1", "2", "3", "4", "+4")
+    var position = 2
+    setTextNumberPicker(position, list, binding)
     binding.decrease.setOnClickListener {
-        if (position>0){
+        if (position > 0) {
             position--
-            setTextNumberPicker(position,list,binding)
+            setTextNumberPicker(position, list, binding)
         }
     }
     binding.increase.setOnClickListener {
-        if (position<4){
+        if (position < 4) {
             position++
-            setTextNumberPicker(position,list,binding)
+            setTextNumberPicker(position, list, binding)
         }
 
     }
 
 }
 
-fun RadioButton.changeColor(color:Int){
-    this.setTextColor(ContextCompat.getColor(context,color))
+fun RadioButton.changeColor(color: Int) {
+    this.setTextColor(ContextCompat.getColor(context, color))
 }
+
 fun setTextNumberPicker(position: Int, list: ArrayList<String>, binding: FragmentSetOrderBinding) {
-    if (position==0){
-        binding.tvCenter.text =list[position]
+    if (position == 0) {
+        binding.tvCenter.text = list[position]
         binding.tvLeft.gone()
-    }else{
-        binding.tvLeft.text=list[position-1]
+    } else {
+        binding.tvLeft.text = list[position - 1]
         binding.tvLeft.visible()
     }
-    binding.tvCenter.text =list[position]
-    if (position==list.size-1){
-        binding.tvCenter.text =list[position]
+    binding.tvCenter.text = list[position]
+    if (position == list.size - 1) {
+        binding.tvCenter.text = list[position]
         binding.tvRight.gone()
-    }else{
-        binding.tvRight.text =list[position+1]
+    } else {
+        binding.tvRight.text = list[position + 1]
         binding.tvRight.visible()
+    }
+}
+
+fun changeLanguage(prefs: PrefsHelper, activity: Activity, baseActivity: BaseActivity<*, *>) {
+    var lvRusskiy = activity.findViewById<LinearLayoutCompat>(R.id.lvRusskiy)
+    var lvUzbekKrill = activity.findViewById<LinearLayoutCompat>(R.id.lvUzbekKrill)
+    var lvUzbekLotin = activity.findViewById<LinearLayoutCompat>(R.id.lvUzbekLotin)
+    var tvRusskiy = activity.findViewById<TextView>(R.id.tvRusskiy)
+    var tvUzbekKrill = activity.findViewById<TextView>(R.id.tvUzbekKrill)
+    var tvUzbekLotin = activity.findViewById<TextView>(R.id.tvUzbekLotin)
+
+    if (prefs.language == "ru") {
+        changeColorBackGround(lvRusskiy, lvUzbekKrill, lvUzbekLotin)
+        changeTextColor(tvRusskiy, tvUzbekKrill, tvUzbekLotin)
+    } else if (prefs.language == "en") {
+        changeColorBackGround(lvUzbekLotin, lvUzbekKrill, lvRusskiy)
+        changeTextColor(tvUzbekLotin, tvUzbekKrill, tvRusskiy)
+    } else if (prefs.language == "ja") {
+        changeColorBackGround(lvUzbekKrill, lvRusskiy, lvUzbekLotin)
+        changeTextColor(tvUzbekKrill, tvRusskiy, tvUzbekLotin)
+    }
+
+    lvRusskiy.setOnClickListener {
+        changeColorBackGround(lvRusskiy, lvUzbekKrill, lvUzbekLotin)
+        changeTextColor(tvRusskiy, tvUzbekKrill, tvUzbekLotin)
+        if (prefs.language != "ru") {
+            baseActivity.setLanguage("ru")
+            activity.recreate()
+        }
+    }
+    lvUzbekKrill.setOnClickListener {
+        changeColorBackGround(lvUzbekKrill, lvRusskiy, lvUzbekLotin)
+        changeTextColor(tvUzbekKrill, tvRusskiy, tvUzbekLotin)
+
+        if (prefs.language != "ja") {
+            baseActivity.setLanguage("ja")
+            activity.recreate()
+        }
+    }
+
+    lvUzbekLotin.setOnClickListener {
+        changeColorBackGround(lvUzbekLotin, lvUzbekKrill, lvRusskiy)
+        changeTextColor(tvUzbekLotin, tvUzbekKrill, tvRusskiy)
+
+        if (prefs.language != "en") {
+            baseActivity.setLanguage("en")
+            // baseActivity.recreate()
+
+        }
     }
 }

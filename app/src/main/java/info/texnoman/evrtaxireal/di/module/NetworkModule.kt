@@ -31,6 +31,9 @@ class NetworkModule {
     @Singleton
     fun provideBaseUrl() = ApiService.BASE_URL
 
+   /* @Provides
+    @Singleton
+    fun provideYandexUrl()=ApiService.YandexURl*/
     /* @Provides
      @Singleton
      fun provideBaseUrl() = PlayerService.BASE_URL*/
@@ -43,4 +46,17 @@ class NetworkModule {
             .client(okHttpClient)
             .build()
     }
+
+
+  /*  @Provides
+    @Singleton
+    fun provideYandex(baseUrl: String, okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder().baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+    }*/
+
+
+
 }

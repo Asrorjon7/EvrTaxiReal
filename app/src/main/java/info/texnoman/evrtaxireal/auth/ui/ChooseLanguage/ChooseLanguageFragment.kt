@@ -29,7 +29,7 @@ class ChooseLanguageFragment : BaseFragment<FragmentChooseLanguageBinding,AuthVi
         setLang("ru")
         binding.btnConfirm.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.chooseUoDFragment)
-            requireActivity().recreate()
+           // requireActivity().recreate()
         }
     }
     private fun changeLanguage() {
@@ -40,7 +40,7 @@ class ChooseLanguageFragment : BaseFragment<FragmentChooseLanguageBinding,AuthVi
                 if (prefs.language != "ru") {
                     setLanguage("ru")
                     if (!isFirstOpen) {
-                        requireActivity().recreate()
+                    //    requireActivity().recreate()
                     }
                 }
             }
@@ -51,7 +51,7 @@ class ChooseLanguageFragment : BaseFragment<FragmentChooseLanguageBinding,AuthVi
                 if (prefs.language != "ja") {
                     setLanguage("ja")
                     if (!isFirstOpen) {
-                        requireActivity().recreate()
+                    //    requireActivity().recreate()
                     }
                 }
             }
@@ -62,7 +62,7 @@ class ChooseLanguageFragment : BaseFragment<FragmentChooseLanguageBinding,AuthVi
                 if (prefs.language != "en") {
                     setLanguage("en")
                     if (!isFirstOpen) {
-                        requireActivity().recreate()
+                    //    requireActivity().recreate()
                     }
                 }
             }

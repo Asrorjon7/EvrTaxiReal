@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import info.texnoman.evrtaxireal.R
-import info.texnoman.evrtaxireal._user.model.SetOrderModel
+import info.texnoman.evrtaxireal.model.SetOrderModel
 import info.texnoman.evrtaxireal.databinding.AdapterSetOrderBinding
 
 data class SetOrderAdapter(var context: Context,var list:List<SetOrderModel>,var click:OnItemClickListener ):RecyclerView.Adapter<SetOrderAdapter.MyHolderView>() {
@@ -30,7 +30,7 @@ data class SetOrderAdapter(var context: Context,var list:List<SetOrderModel>,var
                 click.SetOrderClickListener(model)
             }
                  if (rowIndex ==position){
-                     title.background =ContextCompat.getDrawable(context, R.drawable.line_green_setorder_background)
+                     title.background =ContextCompat.getDrawable(context, R.drawable.setorder_background)
                  }else{
                      title.background =ContextCompat.getDrawable(context,R.drawable.filled_setorder_background)
                  }

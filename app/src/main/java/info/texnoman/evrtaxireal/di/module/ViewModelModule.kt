@@ -15,9 +15,7 @@ import info.texnoman.evrtaxireal.di.factory.ViewModelFactory
 import info.texnoman.evrtaxireal.main.MainViewModel
 import info.texnoman.evrtaxireal.utils.SharedViewModel
 
-/*
-* created by Asrorjon
-*/
+
 @Module
 abstract class ViewModelModule {
 
@@ -60,6 +58,5 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DriverViewmodel::class)
     internal abstract fun provideDriverModel(viewModel: DriverViewmodel): ViewModel
-
 
 }

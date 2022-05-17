@@ -27,4 +27,14 @@
 
 
     </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="info.texnoman.evrtaxireal._driver.ui.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/orderForDriverHistoryFragment"
+        android:name="info.texnoman.evrtaxireal._user.ui.OrderHistory.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" />
 </navigation>

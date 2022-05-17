@@ -1,3 +1,3 @@
-package info.texnoman.evrtaxireal._user.model
+package info.texnoman.evrtaxireal.model
 
 data class OrderHistoryModel(var title:String)

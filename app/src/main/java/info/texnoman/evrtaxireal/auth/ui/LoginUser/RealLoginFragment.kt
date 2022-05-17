@@ -9,10 +9,10 @@ import info.texnoman.evrtaxireal.di.factory.injectViewModel
 import info.texnoman.evrtaxireal.main.MainViewModel
 
 class RealLoginFragment : BaseFragment<FragmentRealLoginBinding,MainViewModel>() {
-
     override fun injectViewModel() {
         mViewModel =injectViewModel(viewModelFactory)
     }
+
     override fun getViewModelClass(): Class<MainViewModel> =MainViewModel::class.java
 
     override fun init() {
@@ -21,6 +21,7 @@ class RealLoginFragment : BaseFragment<FragmentRealLoginBinding,MainViewModel>()
             Navigation.findNavController(it).navigate(action)
         }
     }
+
     override fun setupViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?

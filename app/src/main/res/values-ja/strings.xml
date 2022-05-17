@@ -54,4 +54,11 @@
  <string name="joylashgan_urningiz">Joylashgan o’rningizni yuboring:</string>
  <string name="qachon">Qachon</string>
  <string name="gpsniyoqing">GPSni yoqing</string>
+ <string name="raqamiga_borgan_smsni_kiriting">Raqamiga borgan smsni kiriting</string>
+ <string name="chiqish">Chiqish</string>
+ <string name="ism">Ism:</string>
+ <string name="buyurtma_bekor">Siz rostan ham buyurtmani bekor qilmoqchimisiz?</string>
+ <string name="yoq">Yo\'q</string>
+ <string name="xa">Xa</string>
+ <string name="ketish_vaqtini_tanlang">Ketish vaqtini tanlang</string>
 </resources>

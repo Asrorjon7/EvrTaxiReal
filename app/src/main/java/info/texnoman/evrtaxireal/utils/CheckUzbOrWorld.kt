@@ -3,9 +3,7 @@ package info.texnoman.evrtaxireal.utils
 enum class CheckUzbOrWorld {
     UZB,
     WORLD,
-    Default
-}
-
+    Default}
 enum class TypeService{
    Post,
     Passanger

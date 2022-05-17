@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal._driver.main.DriverActivity
 import info.texnoman.evrtaxireal._user.main.UserActivity
@@ -42,9 +43,7 @@ class LoginAdditionFragment : BaseFragment<FragmentLoginBinding, AuthViewModel>(
             }
             Log.e("sdad",a.toString())
             etSurnameInput.afterTextChangedNull {
-
                 Log.e("salom",it.toString())
-
             }
         }
         /*var name=  binding.etNameInput.validate("") { s -> s.length in 3..30 }
@@ -83,9 +82,13 @@ class LoginAdditionFragment : BaseFragment<FragmentLoginBinding, AuthViewModel>(
                 //  var et = etNameInput.validate("Eng kamida 3 ta harf bo'lishi kerak") { s -> s.length in 3..30 }
                 var surname = etSurnameInput.text.toString()
                 var name = etNameInput.text.toString()
-                // var phone =etNumberInput.replace()
-                // Log.e("text",etNumberInput.validate("To'liq kiriting"){s-> s.length in 0..11}.toString())
-                viewModel.registration(SignRequest(sexType, name, token, surname))
+              var  token =SaveUserInformation.getAuthInfo().token.toString()
+
+                if (DrivePassanger.getTypeService() == PassangerOrDrive.Driver) {
+                viewModel.registration(SignRequest(sexType, name, token, surname,5))
+                }else{
+                    viewModel.registration(SignRequest(sexType, name, token, surname,1))
+                }
 
                 viewModel.register.observe(viewLifecycleOwner) { result ->
                     when (result.status) {
@@ -100,13 +103,18 @@ class LoginAdditionFragment : BaseFragment<FragmentLoginBinding, AuthViewModel>(
                             requireView().hideKeyboard()
                         }
                         Status.SUCCESS -> result.data.let {
-                            Log.e("response", it.toString())
+                          Log.e("responselar",it.toString())
                             if (it?.status == 200) {
                                 it.data.let { response ->
+
+                                    if (it.code==2){
+                                        Navigation.findNavController(requireView()).navigate(R.id.carAboutInfoFragment)
+                                    }else if (it.code==10){
                                     if (DrivePassanger.getTypeService() == PassangerOrDrive.Driver) {
                                         startActivity(Intent(requireContext(), DriverActivity::class.java))
                                     } else {
                                         startActivity(Intent(requireContext(), UserActivity::class.java)) }
+                                    }
                                 }
                             } else {
                                 Toast.makeText(requireContext(), it?.message.toString() + "", Toast.LENGTH_SHORT).show()
@@ -118,6 +126,4 @@ class LoginAdditionFragment : BaseFragment<FragmentLoginBinding, AuthViewModel>(
             }
         }
     }
-
-
 }

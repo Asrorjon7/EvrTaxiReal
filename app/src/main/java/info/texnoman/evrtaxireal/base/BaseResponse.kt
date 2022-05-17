@@ -7,4 +7,5 @@ class BaseResponse<T>(
     var data:T?=null,
     var status: Int? =null,
     var message:String,
+    var code:Int?=null,
     var errors: ErrorModel?=null)

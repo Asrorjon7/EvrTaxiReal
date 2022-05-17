@@ -10,9 +10,11 @@ data class SignRequest(
 	@field:SerializedName("last_name")
 	val lastName: String? = null,
 
-	@field:SerializedName("auth_key")
+	@field:SerializedName("token")
 	val authKey: String? = null,
 
 	@field:SerializedName("first_name")
-	val firstName: String? = null
+	val firstName: String? = null,
+	@field:SerializedName("type")
+	val type: Int?=null
 )

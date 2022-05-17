@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.ui.RegLogChoose.EntryFragment">
-
     <ImageView
         android:id="@+id/evrpattern"
         android:layout_width="@dimen/_250sdp"
@@ -23,7 +22,6 @@
         android:layout_height="@dimen/_180sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:src="@drawable/evrlogo"
-        app:layout_constraintBottom_toTopOf="@+id/btnPassanger"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,30 +38,32 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.hbb20.CountryCodePicker
+
+            <Spinner
                 android:id="@+id/codePicker"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_42sdp"
-                app:ccp_defaultNameCode="UZ"
-                android:gravity="center"
                 android:layout_marginLeft="@dimen/marginsize"
-                app:ccp_textSize="@dimen/_12sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/etNumberInput"
+                android:background="@drawable/spinner_back"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:elevation="0.009dp"
-                android:background="@drawable/edittext_background">
-            </com.hbb20.CountryCodePicker>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.923" />
+
             <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
                 android:id="@+id/etNumberInput"
                 style="@style/editTextStyle"
                 android:layout_width="0dp"
-                android:layout_marginLeft="-12dp"
+                android:background="@drawable/maskeditbackground"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginRight="@dimen/marginsize"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:paddingHorizontal="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintRight_toRightOf="parent"
                 android:inputType="number"
-
                 app:layout_constraintLeft_toRightOf="@+id/codePicker"
                 app:keep_hint="true"
                 mask:allowed_chars="1234567890"

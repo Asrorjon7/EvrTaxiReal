@@ -1,8 +1,8 @@
-package info.texnoman.evrtaxireal._user.model.response
+package info.texnoman.evrtaxireal.auth.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RegionResponse(
+data class CountryModel(
 
 	@field:SerializedName("name")
 	val name: String? = null,

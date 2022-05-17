@@ -15,21 +15,20 @@ import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal.di.factory.ViewModelFactory
 import info.texnoman.evrtaxireal.utils.Constants
 import info.texnoman.evrtaxireal.utils.PrefsHelper
+import info.texnoman.evrtaxireal.utils.SaveUserInformation
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
 abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatActivity(),LifecycleObserver {
-
     private val gson: Gson = Gson()
     companion object {
         const val LOCATION_PERMISSION_REQUEST = 101
-
     }
     lateinit var prefs: PrefsHelper
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
+    protected  var token:String=""
     protected lateinit var mViewModel: V
     private var _binding: B? = null
     protected val binding get() = requireNotNull(_binding)
@@ -46,6 +45,11 @@ abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatAct
         injectViewModel()
     _binding =setupViewBinding(layoutInflater)
         setContentView(binding.root)
+    try {
+        token = SaveUserInformation.getAuthInfo().token.toString()
+    }catch (e:Exception){
+
+    }
     lifecycle.addObserver(this)
     init()
     permissionLocation()
@@ -121,11 +125,6 @@ abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatAct
         super.attachBaseContext(updateBaseContextLocale(context))
     }
 
-    /**
-     * Updates locale of the base context of the [ParentActivity] when there has been a locale change.
-     * NOTE: This method also needs to called in [onCreate] function of the [ParentActivity] so that
-     * Android 6- versions will also be affected.
-     */
     private fun updateBaseContextLocale(context: Context): Context {
         val locale = Locale(prefs.language ?: Constants.LANGUAGE_UZBEK)
         Locale.setDefault(locale)
@@ -135,19 +134,11 @@ abstract class BaseActivity<B : ViewBinding, V : ViewModel> : DaggerAppCompatAct
         }
         return updateResourcesLocaleLegacy(context, locale)
     }
-
-    /**
-     * Updates resources for versions Android 7+
-     */
     private fun updateResourcesLocale(context: Context, locale: Locale): Context {
         val conf = context.resources.configuration
         conf.setLocale(locale)
         return context.createConfigurationContext(conf)
     }
-
-    /**
-     * Updates resources for versions Android 6-
-     */
     private fun updateResourcesLocaleLegacy(context: Context, locale: Locale): Context {
         val resources = context.resources
         val conf = resources.configuration

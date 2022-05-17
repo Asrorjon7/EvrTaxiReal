@@ -1,20 +1,15 @@
 package info.texnoman.evrtaxireal.auth.model
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 
 data class ConfirmResponse(
-	@field:SerializedName("status_code")
-	val statusCode: Int? = null,
-
+	@field:SerializedName("token")
+	val token: String? = null,
 	@field:SerializedName("updated_at")
 	val updatedAt: String? = null,
-
 	@field:SerializedName("phone")
 	val phone: String? = null,
-
 	@field:SerializedName("sex")
 	val sex: String? = null,
 
@@ -38,47 +33,4 @@ data class ConfirmResponse(
 
 	@field:SerializedName("status")
 	val status: String? = null
-) : Parcelable {
-	constructor(parcel: Parcel) : this(
-		parcel.readValue(Int::class.java.classLoader) as? Int,
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readValue(Int::class.java.classLoader) as? Int,
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readString(),
-		parcel.readString()
-	) {
-	}
-
-	override fun writeToParcel(parcel: Parcel, flags: Int) {
-		parcel.writeValue(statusCode)
-		parcel.writeString(updatedAt)
-		parcel.writeString(phone)
-		parcel.writeString(sex)
-		parcel.writeString(lastName)
-		parcel.writeString(createdAt)
-		parcel.writeValue(id)
-		parcel.writeString(authKey)
-		parcel.writeString(type)
-		parcel.writeString(firstName)
-		parcel.writeString(status)
-	}
-
-	override fun describeContents(): Int {
-		return 0
-	}
-
-	companion object CREATOR : Parcelable.Creator<ConfirmResponse> {
-		override fun createFromParcel(parcel: Parcel): ConfirmResponse {
-			return ConfirmResponse(parcel)
-		}
-
-		override fun newArray(size: Int): Array<ConfirmResponse?> {
-			return arrayOfNulls(size)
-		}
-	}
-}
+)

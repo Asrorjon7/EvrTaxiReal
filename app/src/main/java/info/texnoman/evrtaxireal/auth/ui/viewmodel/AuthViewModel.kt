@@ -15,20 +15,26 @@ import info.texnoman.evrtaxireal.base.BaseResponse
 import info.texnoman.evrtaxireal.base.BaseViewModel
 import info.texnoman.evrtaxireal.base.SingleLiveEvent
 import info.texnoman.evrtaxireal.common.Repository
-import kotlinx.coroutines.*
+import info.texnoman.evrtaxireal.model.request.SetCarAboutRequest
+import info.texnoman.evrtaxireal.model.response.CarAboutResponse
+import info.texnoman.evrtaxireal.utils.Result
+import info.texnoman.evrtaxireal.utils.SaveUserInformation
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
-import info.texnoman.evrtaxireal.utils.Result
-import info.texnoman.evrtaxireal.utils.SaveUserInformation
 
 class AuthViewModel @Inject constructor(
     application: Application,
     private val repository: Repository,
     @Named("IO") private val io: CoroutineDispatcher,
-    @Named("MAIN") private val main: CoroutineDispatcher) :
+    @Named("MAIN") private val main: CoroutineDispatcher
+) :
     BaseViewModel(application) {
     private var _changeLoginImage: MutableLiveData<Boolean> = MutableLiveData()
     val changeLoginImage: LiveData<Boolean> = _changeLoginImage
@@ -45,27 +51,28 @@ class AuthViewModel @Inject constructor(
     private val _registr = SingleLiveEvent<Result<BaseResponse<SignResponse>>>()
     val register: SingleLiveEvent<Result<BaseResponse<SignResponse>>> get() = _registr
 
-    private val _entryNumber =SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>>()
-    val entryNumber:SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>> get()=_entryNumber
+    private val _entryNumber = SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>>()
+    val entryNumber: SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>> get() = _entryNumber
 
-    internal  fun funEntryNumber(entryNumberRequest: EntryNumberRequest){
+    internal fun funEntryNumber(entryNumberRequest: EntryNumberRequest): SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>> {
+        var data = SingleLiveEvent<Result<BaseResponse<EntryNumberResponse>>>()
         viewModelScope.launch(main) {
             try {
-
-                _entryNumber.postValue(Result.loading(null))
+                data.postValue(Result.loading(null))
                 delay(1_500)
-                val result =async (context = io){
+                val result = async(context = io) {
                     repository.entryNumber(entryNumberRequest)
                 }
                 if (result.await().data?.success == true) {
-                      SaveUserInformation.saveAuthInfo(Result.success(result.await()).data?.data?.data!!)
+
+                    SaveUserInformation.saveAuthInfo(Result.success(result.await()).data?.data?.data!!)
                 }
-                _entryNumber.postValue(Result.success(result.await().data))
-            }
-            catch (e:Throwable){
-                _entryNumber.postValue(Result.error(e.localizedMessage))
+                data.postValue(Result.success(result.await().data))
+            } catch (e: Throwable) {
+                data.postValue(Result.error(e.localizedMessage))
             }
         }
+        return data
 
     }
 
@@ -83,8 +90,8 @@ class AuthViewModel @Inject constructor(
                     repository.signUp(signRequest)
                 }
                 if (result.await().data?.success == true) {
-                var token=Result.success(result.await()).data?.data?.data?.authKey
-                  SaveUserInformation.saveAuthInfo(EntryNumberResponse(token))
+                    var token = Result.success(result.await()).data?.data?.data?.authKey
+                    SaveUserInformation.saveAuthInfo(EntryNumberResponse(token))
                 }
                 setResultRegister(Result.success(result.await().data))
             } catch (e: Throwable) {
@@ -93,13 +100,13 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-
     private val _confirm = SingleLiveEvent<Result<BaseResponse<ConfirmResponse>>>()
     val confirm: SingleLiveEvent<Result<BaseResponse<ConfirmResponse>>> get() = _confirm
 
     private fun setResultConfirm(result: Result<BaseResponse<ConfirmResponse>>) {
         _confirm.postValue(result)
     }
+
     internal fun confirm(signRequest: ConfirmRequest) {
         viewModelScope.launch(main) {
             try {
@@ -108,9 +115,9 @@ class AuthViewModel @Inject constructor(
                 val result = async(context = io) {
                     repository.confirmNumber(signRequest)
                 }
-               if (result.await().data?.success == true) {
-                var token = result.await().data?.data?.authKey
-             SaveUserInformation.saveAuthInfo(EntryNumberResponse(token))
+                if (result.await().data?.success == true) {
+                    var token = result.await().data?.data?.token
+                    SaveUserInformation.saveAuthInfo(EntryNumberResponse(token))
                 }
                 setResultConfirm(Result.success(result.await().data))
             } catch (e: Throwable) {
@@ -119,14 +126,22 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+
+
+
+
+
+
+
+
     fun setLoginChangeImage(type: Boolean) {
         _changeLoginImage.value = type
     }
 
-    fun timerStart(minut:Long): CountDownTimer {
+    fun timerStart(minut: Long): CountDownTimer {
         _isStartFlow.value = true
         _isEndFlow.value = false
-        var timer: CountDownTimer = object : CountDownTimer(minut*60000, 1000) {
+        var timer: CountDownTimer = object : CountDownTimer(minut * 60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val sec = (millisUntilFinished / 1000) % 60
                 val min = (millisUntilFinished / (1000 * 60)) % 60
@@ -140,6 +155,7 @@ class AuthViewModel @Inject constructor(
                 } catch (e: Exception) {
                 }
             }
+
             override fun onFinish() {
                 _isEndFlow.value = true
             }

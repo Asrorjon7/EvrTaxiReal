@@ -8,5 +8,6 @@
     <dimen name="textsize_20">@dimen/_20sdp</dimen>
     <dimen name="carInfomargintop">@dimen/_12sdp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="strokeWidth">0.7dp</dimen>
 
 </resources>

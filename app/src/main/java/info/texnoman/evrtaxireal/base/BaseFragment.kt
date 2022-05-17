@@ -25,16 +25,18 @@ import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewBinding, V : ViewModel> : DaggerFragment(),
     LifecycleObserver {
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val gson = Gson()
+
     protected lateinit var prefs: PrefsHelper
     protected lateinit var mViewModel: V
-
     val viewModel: V get() = mViewModel
 
     open lateinit var sharedViewModel: SharedViewModel
     protected lateinit var token:String
+
     abstract fun injectViewModel()
 
     abstract fun getViewModelClass(): Class<V>
@@ -47,7 +49,7 @@ abstract class BaseFragment<B : ViewBinding, V : ViewModel> : DaggerFragment(),
         super.onCreate(savedInstanceState)
         sharedViewModel =injectViewModel(viewModelFactory)
        try {
-           token =SaveUserInformation.getAuthInfo().confirmToken.toString()
+           token =SaveUserInformation.getAuthInfo().token.toString()
        }catch (e:Exception){
 
        }
@@ -75,13 +77,12 @@ abstract class BaseFragment<B : ViewBinding, V : ViewModel> : DaggerFragment(),
     }
     override fun onDestroyView() {
         _binding = null
-
         super.onDestroyView()
 
     }
     abstract fun init()
     abstract fun setupViewBinding(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?
     ): B
 
     fun setTitle(title: String?) {
@@ -98,9 +99,9 @@ abstract class BaseFragment<B : ViewBinding, V : ViewModel> : DaggerFragment(),
         val locale = Locale(language)
         conf.setLocale(locale)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            requireActivity().createConfigurationContext(conf) //for Android 7+
+            requireActivity().createConfigurationContext(conf)
         } else {
-            resources.updateConfiguration(conf, dm) //for Android 6-
+            resources.updateConfiguration(conf, dm)
         }
     }
 

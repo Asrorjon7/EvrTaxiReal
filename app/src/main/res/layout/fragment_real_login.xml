@@ -6,13 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.ui.LoginUser.RealLoginFragment">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         mask:layout_constraintBottom_toBottomOf="parent"
-        mask:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="@dimen/_12sdp">
+        mask:layout_constraintTop_toTopOf="parent">
         <info.texnoman.evrtaxireal.utils.maskeditText.MaskedEditText
             android:id="@+id/etNumberInput"
             style="@style/editTextStyle"
@@ -22,10 +25,12 @@
             app:keep_hint="true"
             mask:allowed_chars="1234567890"
             mask:mask="+998 ##-###-##-##" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
             style="@style/AppTheme.GreenButton"
             android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
             android:layout_marginHorizontal="0dp"
             android:layout_marginTop="@dimen/_18sdp"
             android:drawableRight="@color/white"

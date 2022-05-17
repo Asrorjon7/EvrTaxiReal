@@ -1,0 +1,38 @@
+[
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "color": "#45433b"
+      },
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.medical",
+    "stylers": [
+      {
+        "color": "#ccb42e"
+      },
+      {
+        "saturation": 65
+      },
+      {
+        "lightness": -100
+      },
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.school",
+    "stylers": [
+      {
+        "visibility": "on"
+      }
+    ]
+  }
+]

@@ -16,6 +16,6 @@
          android:paddingVertical="@dimen/_7sdp"
          android:paddingHorizontal="@dimen/_10sdp"
          style="@style/AppTheme.MediumTextview"
-         android:background="@drawable/line_green_setorder_background"
+         android:background="@drawable/setorder_background"
          />
 </androidx.appcompat.widget.LinearLayoutCompat>

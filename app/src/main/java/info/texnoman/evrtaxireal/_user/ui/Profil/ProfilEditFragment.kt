@@ -3,6 +3,7 @@ package info.texnoman.evrtaxireal._user.ui.Profil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import info.texnoman.evrtaxireal.R
 import info.texnoman.evrtaxireal._user.main.UserActivity
 import info.texnoman.evrtaxireal._user.viewmodel.UserViewModel
@@ -18,6 +19,10 @@ class ProfilEditFragment() : BaseFragment<FragmentProfilEditBinding, UserViewMod
 
     override fun init() {
         (requireActivity() as UserActivity).hideActionBar()
+        binding.ivBack.setOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+        }
+
     }
     override fun setupViewBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentProfilEditBinding {
         return FragmentProfilEditBinding.inflate(inflater, container, false)

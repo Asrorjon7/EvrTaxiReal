@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:gravity="center">
+      <ImageView
+          android:id="@+id/iv_view"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/view1"
+          />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="Siz uchun ishlaymiz"
+        style="@style/AppTheme.MediumTextview"
+        android:textSize="@dimen/_13sdp"
+        />
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="Shunchaki dasturimizga kiring va o’zingizga ma’qul kelgan narxda mashinaga buyurtma bering!"
+        android:textSize="@dimen/_11sdp"
+        android:lineSpacingExtra="3sp"
+        android:gravity="center"
+        android:textColor="#4B5563"
+        android:fontFamily="@font/roboto"
+        />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

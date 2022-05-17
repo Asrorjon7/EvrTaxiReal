@@ -8,7 +8,7 @@ android {
     compileSdk 31
     defaultConfig {
         applicationId "info.texnoman.evrtaxireal"
-        minSdk 19
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -88,7 +88,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
     implementation "io.reactivex.rxjava2:rxjava:2.2.19"
-
     implementation 'io.github.pilgr:paperdb:2.7.2'
     implementation 'com.airbnb.android:lottie:4.2.2'
     implementation 'androidx.preference:preference:1.1.1'
@@ -96,6 +95,11 @@ dependencies {
     implementation 'com.hbb20:ccp:2.6.0'
     implementation project(':smartmaterialspinner')
     implementation 'com.samigehi:loadingview:1.1'
+    implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+    implementation project(":date_time_picker")
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+
 }
 
 
